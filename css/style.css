@@ -12,9 +12,9 @@
 }
 
 /* logos */
-.logo-left img {
-  height: 10px;
-  width: auto;
+header.header .logo-left img {
+  height: 40px !important; /* El !important es para forzarlo y ver si reacciona */
+  width: auto !important;
 }
 
 .logo-center img {
