@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiénes somos - EITEL</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header").innerHTML = data;
+  });
+</script>
+
+<main class="container">
+
+  <!-- TÍTULO -->
+  <h1 class="titulo">Quiénes somos</h1>
+
+  <!-- UNIVERSIDAD -->
+  <section class="bloque">
+    <h2>Universidad Carlos III de Madrid</h2>
+    <p>
+      La Universidad Carlos III de Madrid es la principal impulsora del proyecto, 
+      aportando equipos multidisciplinares que incluyen especialistas en derecho, 
+      inteligencia artificial, simulación, integración de datos, ciberseguridad 
+      y estudios sobre pobreza energética.
+    </p>
+  </section>
+
+  <!-- AYUNTAMIENTOS -->
+  <section class="bloque">
+    <h2>Ayuntamientos participantes</h2>
+    <ul>
+      <li>Ayuntamiento de Alcorcón</li>
+      <li>Ayuntamiento de Cartagena</li>
+      <li>Ayuntamiento de Fuenlabrada</li>
+      <li>Ayuntamiento de Getafe</li>
+    </ul>
+  </section>
+
+  <!-- EMPRESA -->
+  <section class="bloque">
+    <h2>ESRI</h2>
+    <p>
+      ESRI España es la filial del líder mundial en Sistemas de Información Geográfica (SIG). 
+      Su tecnología permite integrar datos geoespaciales para mejorar la toma de decisiones, 
+      impulsando la eficiencia, la sostenibilidad y la transformación digital.
+    </p>
+  </section>
+
+  <!-- TEXTO FINAL -->
+  <section class="bloque legal">
+    <p>
+      El proyecto EITEL está financiado por el Ministerio para la Transformación Digital 
+      y de la Función Pública. El contenido de esta página es responsabilidad exclusiva 
+      de sus autores.
+    </p>
+  </section>
+
+</main>
+
+</body>
+</html>
