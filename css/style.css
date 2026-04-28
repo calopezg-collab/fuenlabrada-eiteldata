@@ -223,15 +223,16 @@
 
 /* TITULO */
 .partner-title {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  color: #111827;
+  color: #001384;
   margin: 0;
 }
 
 /* DESCRIPCIÓN */
 .partner-description {
   font-size: 0.9rem;
+  text-align: justify;
   line-height: 1.4;
   color: #374151;
   margin: 0.5rem 0;
