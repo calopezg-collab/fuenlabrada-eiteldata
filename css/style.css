@@ -13,7 +13,7 @@
 
 /* logos */
 .logo-left img {
-  height: 60px !important; /* El !important es para forzarlo y ver si reacciona */
+  height: 60px !important; 
   width: auto !important;
 }
 
@@ -81,8 +81,6 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-/* TODO lo que ya tenías arriba */
 
 /* ===================== */
 /* QUÉ ES EITEL / QUIÉNES SOMOS */
