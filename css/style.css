@@ -3,7 +3,6 @@
   border-bottom: 1px solid #ddd;
 }
 
-/* parte superior */
 .header-top {
   display: flex;
   justify-content: space-between;
@@ -11,9 +10,8 @@
   padding: 15px 30px;
 }
 
-/* logos */
 .logo-left img {
-  height: 60px !important; 
+  height: 60px !important;
   width: auto !important;
 }
 
@@ -22,7 +20,6 @@
   width: auto;
 }
 
-/* iconos derecha */
 .header-right img {
   height: 20px;
   margin-left: 10px;
@@ -34,7 +31,6 @@
   transform: scale(1.1);
 }
 
-/* menú */
 .navbar {
   display: flex;
   justify-content: center;
@@ -52,7 +48,7 @@
 .navbar a:hover {
   color: #0073e6;
 }
-/* DROPDOWN */
+
 .dropdown {
   position: relative;
 }
@@ -60,7 +56,6 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  left: 0;
   background: white;
   min-width: 180px;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
@@ -71,7 +66,6 @@
   display: block;
   padding: 10px;
   color: #333;
-  font-weight: normal;
 }
 
 .dropdown-content a:hover {
@@ -82,37 +76,33 @@
   display: block;
 }
 
-/* ===================== */
-/* QUÉ ES EITEL / QUIÉNES SOMOS */
-/* ===================== */
-
 .container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
+  font-family: sans-serif;
 }
 
 .titulo {
   text-align: center;
-  color: #002D72;
+  color: #001384;
+  font-size: 32px;
+  margin-bottom: 40px;
 }
 
 .bloque {
   margin-bottom: 40px;
+  color: #333;
+  line-height: 1.6;
 }
 
 .bloque h2 {
-  color: #002D72;
+  color: #001384;
   margin-bottom: 10px;
 }
 
 .bloque p {
   text-align: justify;
-  line-height: 1.6;
-}
-
-.bloque ul {
-  padding-left: 20px;
 }
 
 .legal {
