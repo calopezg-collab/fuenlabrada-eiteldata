@@ -135,3 +135,23 @@
 .boton:hover {
   background: #000a4d;
 }
+
+.objetivos-eitel .partner-card-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #001384;
+  padding: 2rem;
+  text-align: center;
+}
+
+.objetivos-eitel .partner-card-back {
+  justify-content: center;
+}
+.objetivos-eitel .partner-card-front img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
