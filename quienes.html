@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Quiénes somos - EITEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiénes somos - EITEL Fuenlabrada</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -10,7 +11,6 @@
 
 <!-- HEADER -->
 <div id="header"></div>
-
 <script>
 fetch("header.html")
   .then(res => res.text())
@@ -19,53 +19,107 @@ fetch("header.html")
   });
 </script>
 
-<main class="container">
+<!-- HERO -->
+<section class="hero-quienes">
+  <div class="hero-quienes-content">
+    <h1>Quiénes somos</h1>
+    <div class="hero-divider"></div>
+    <p>Conoce a las entidades que hacen posible el proyecto EITEL en Fuenlabrada</p>
+  </div>
+</section>
 
-  <!-- TÍTULO -->
-  <h1 class="titulo">Quiénes somos</h1>
+<!-- FUENLABRADA -->
+<div class="seccion-titulo">
+  <h2>Entidad local impulsora</h2>
+  <p>Principal organismo municipal coordinador del proyecto en el territorio</p>
+</div>
 
-  <!-- UNIVERSIDAD -->
-  <section class="bloque">
-    <h2>Universidad Carlos III de Madrid</h2>
+<div class="entidad-bloque">
+  <div class="entidad-foto">
+    <img src="img/foto-fuenlabrada.jpg" alt="Ayuntamiento de Fuenlabrada">
+  </div>
+  <div class="entidad-info">
     <p>
-      La Universidad Carlos III de Madrid es la principal impulsora del proyecto, 
-      aportando equipos multidisciplinares que incluyen especialistas en derecho, 
-      inteligencia artificial, simulación, integración de datos, ciberseguridad 
-      y estudios sobre pobreza energética.
+      El <strong>Ayuntamiento de Fuenlabrada</strong> lidera la implantación del proyecto EITEL,
+      impulsando la innovación y la transformación digital para mejorar la eficiencia energética
+      y combatir la pobreza energética en el municipio.
     </p>
-  </section>
+    <a href="https://www.ayto-fuenlabrada.es" class="boton" target="_blank">Visitar sitio web</a>
+  </div>
+</div>
 
-  <!-- AYUNTAMIENTOS -->
-  <section class="bloque">
-    <h2>Ayuntamientos participantes</h2>
-    <ul>
-      <li>Ayuntamiento de Alcorcón</li>
-      <li>Ayuntamiento de Cartagena</li>
-      <li>Ayuntamiento de Fuenlabrada</li>
-      <li>Ayuntamiento de Getafe</li>
-    </ul>
-  </section>
+<hr class="separador">
 
-  <!-- EMPRESA -->
-  <section class="bloque">
-    <h2>ESRI</h2>
+<!-- SOCIOS -->
+<div class="seccion-titulo">
+  <h2>Principales socios del proyecto</h2>
+  <p>Organismos que aportan soporte técnico y científico</p>
+</div>
+
+<!-- UC3M -->
+<div class="entidad-bloque">
+  <div class="entidad-foto">
+    <img src="img/foto-uc3m.jpg" alt="UC3M">
+  </div>
+  <div class="entidad-info">
     <p>
-      ESRI España es la filial del líder mundial en Sistemas de Información Geográfica (SIG). 
-      Su tecnología permite integrar datos geoespaciales para mejorar la toma de decisiones, 
-      impulsando la eficiencia, la sostenibilidad y la transformación digital.
+      La <strong>Universidad Carlos III de Madrid</strong> aporta conocimiento en análisis de datos,
+      inteligencia artificial, ciberseguridad y estudio de la pobreza energética desde una perspectiva social.
     </p>
-  </section>
+    <a href="https://www.uc3m.es" class="boton" target="_blank">Visitar sitio web</a>
+  </div>
+</div>
 
-  <!-- TEXTO FINAL -->
-  <section class="bloque legal">
+<!-- ESRI -->
+<div class="entidad-bloque foto-derecha">
+  <div class="entidad-foto logo-centro">
+    <img src="img/logo-esri.png" alt="ESRI">
+  </div>
+  <div class="entidad-info">
     <p>
-      El proyecto EITEL está financiado por el Ministerio para la Transformación Digital 
-      y de la Función Pública. El contenido de esta página es responsabilidad exclusiva 
-      de sus autores.
+      <strong>ESRI España</strong> proporciona la tecnología geoespacial necesaria para el análisis
+      y visualización de datos mediante su plataforma ArcGIS, facilitando la toma de decisiones basada en datos.
     </p>
-  </section>
+    <a href="https://www.esri.es" class="boton" target="_blank">Visitar sitio web</a>
+  </div>
+</div>
 
-</main>
+<hr class="separador">
+
+<!-- OTROS AYUNTAMIENTOS -->
+<div class="seccion-titulo">
+  <h2>Otros ayuntamientos participantes</h2>
+</div>
+
+<div class="aytos-logos">
+  <div class="ayto-item">
+    <img src="img/logo-getafe.png">
+    <span>Getafe</span>
+  </div>
+
+  <div class="ayto-item">
+    <img src="img/logo-cartagena.png">
+    <span>Cartagena</span>
+  </div>
+</div>
+
+<!-- AVISO -->
+<div class="aviso-legal">
+  <p>
+    Proyecto financiado por el Ministerio para la Transformación Digital.
+    El contenido es responsabilidad exclusiva de sus autores.
+  </p>
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+<script>
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>
 
 </body>
 </html>
