@@ -281,6 +281,38 @@
   }
 }
 
+.site-footer {
+  background: #fff;
+  padding: 20px 0;
+}
+
+
+/* UC3M */
+.footer-logos-bottom-eitel {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* 3 logos inferiores */
+.footer-logos-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 0;
+  flex-wrap: wrap;
+}
+
+/* tamaños */
+.footer-logos-bottom-eitel img {
+  height: 100px;
+}
+
+.footer-logos-bottom img {
+  height: 50px;
+  width: auto;
+}
+
 /* TIPO DE LETRA */
 body {
   font-family: Arial, Helvetica, sans-serif;
