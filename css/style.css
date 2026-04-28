@@ -81,3 +81,43 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* TODO lo que ya tenías arriba */
+
+/* ===================== */
+/* QUÉ ES EITEL / QUIÉNES SOMOS */
+/* ===================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.titulo {
+  text-align: center;
+  color: #002D72;
+}
+
+.bloque {
+  margin-bottom: 40px;
+}
+
+.bloque h2 {
+  color: #002D72;
+  margin-bottom: 10px;
+}
+
+.bloque p {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.bloque ul {
+  padding-left: 20px;
+}
+
+.legal {
+  font-size: 0.9em;
+  color: #666;
+}
