@@ -377,98 +377,135 @@
   padding-left: 14px;
 }
 
-/* BLOQUES */
+/* ===================== */
+/* BLOQUES QUIÉNES SOMOS */
+/* ===================== */
+
 .entidad-bloque {
-  border-radius: 16px; /* antes 4px */
+  display: flex; /* 🔥 CLAVE para izquierda/derecha */
+  margin: 2rem auto;
+  max-width: 1000px;
+
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: white;
-}
-.entidad-bloque:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+
+  background: #f4f7ff; /* estilo sensores */
+  border-left: 5px solid #001384;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
 }
 
+.entidad-bloque:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+
+/* alternar derecha */
 .entidad-bloque.foto-derecha {
   flex-direction: row-reverse;
 }
-.entidad-bloque.foto-derecha .entidad-foto {
-  border-radius: 0 16px 16px 0;
-}
+
+/* ===================== */
+/* IMÁGENES */
+/* ===================== */
 
 .entidad-foto {
-  border-radius: 16px 0 0 16px;
+  flex: 0 0 300px;   /* 🔥 tamaño fijo */
+  height: 220px;     /* 🔥 todas iguales */
   overflow: hidden;
-  transition: transform 0.5s ease;
+
+  border-radius: 16px 0 0 16px;
+}
+
+/* si está a la derecha */
+.entidad-bloque.foto-derecha .entidad-foto {
+  border-radius: 0 16px 16px 0;
 }
 
 .entidad-foto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  transition: transform 0.5s ease;
 }
 
+/* efecto suave */
 .entidad-bloque:hover .entidad-foto img {
   transform: scale(1.05);
 }
 
-.logo-centro {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f8f9ff;
+/* logos (ESRI por ejemplo) */
+.entidad-foto.logo img {
+  object-fit: contain;
+  padding: 20px;
+  background: #eef2ff;
 }
 
+/* ===================== */
+/* TEXTO */
+/* ===================== */
+
 .entidad-info {
+  flex: 1;
   padding: 2rem;
+}
+
+/* línea decorativa más elegante */
+.entidad-info::before {
+  content: "";
+  width: 35px;
+  height: 3px;
+  background: #001384;
+  display: block;
+  margin-bottom: 12px;
+  border-radius: 2px;
 }
 
 .entidad-info p {
   text-align: justify;
   font-size: 1rem;
-  line-height: 1.75;
-  color: #444;
-}
-.entidad-info::before {
-  content: "";
-  width: 40px;
-  height: 4px;
-  background: #001384;
-  display: block;
-  margin-bottom: 15px;
-  border-radius: 2px;
+  line-height: 1.7;
+  color: #333;
 }
 
-/* AYUNTAMIENTOS */
-.aytos-logos {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
+/* ===================== */
+/* TITULOS DE SECCIÓN */
+/* ===================== */
+
+.seccion-titulo h2 {
+  color: #001384;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  border-left: 4px solid #001384; /* más fino */
+  padding-left: 12px;
+
+  margin-bottom: 5px;
 }
 
-.ayto-item img {
-  height: 80px;
+.seccion-titulo p {
+  color: #555;
+  margin-left: 16px;
 }
 
-/* AVISO */
-.aviso-legal {
-  max-width: 1000px;
-  margin: 3rem auto;
-  padding: 1.2rem;
-  background: #f4f7ff;
-  border-left: 5px solid #001384;
-}
+/* ===================== */
+/* BOTÓN */
+/* ===================== */
 
-/* BOTON */
 .boton {
   display: inline-block;
+  margin-top: 15px;
   padding: 0.7rem 1.5rem;
+
   background: #001384;
   color: white;
+
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
+
   transition: all 0.3s ease;
 }
 
@@ -476,6 +513,23 @@
   background: #007ac3;
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 19, 132, 0.2);
+}
+
+/* ===================== */
+/* RESPONSIVE */
+/* ===================== */
+
+@media (max-width: 768px) {
+  .entidad-bloque,
+  .entidad-bloque.foto-derecha {
+    flex-direction: column;
+  }
+
+  .entidad-foto {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px 16px 0 0;
+  }
 }
 
 /* TIPO DE LETRA */
