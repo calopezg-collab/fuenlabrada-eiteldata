@@ -705,6 +705,22 @@
   border-left: 5px solid #001384;
 }
 
+.titulo-seccion {
+  color: #001384;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  border-left: 4px solid #001384;
+  padding-left: 12px;
+
+  margin-bottom: 5px;
+}
+
+.titulo-texto {
+  color: #555;
+  margin-left: 16px;
+}
+
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
