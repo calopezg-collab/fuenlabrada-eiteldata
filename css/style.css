@@ -566,9 +566,12 @@
 /* ================= HERO HOME ================= */
 .hero-home {
   position: relative;
-  min-height: 520px;
+  width: 100%;
+  min-height: 500px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .hero-home::before {
@@ -577,8 +580,9 @@
   inset: 0;
   background-image: url('img/portada.png'); 
   background-size: cover;
-  background-position: center;
-  filter: brightness(0.4);
+  background-position: center 55%;
+  filter: brightness(0.38) saturate(0.9);
+  z-index: 0;
 }
 
 .hero-home::after {
