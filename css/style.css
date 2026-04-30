@@ -575,7 +575,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('img/TU-IMAGEN-AQUI.jpg'); /* ← CAMBIAS AQUÍ */
+  background-image: url('img/Tportada.png'); 
   background-size: cover;
   background-position: center;
   filter: brightness(0.4);
