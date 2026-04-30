@@ -622,22 +622,26 @@
 
 /* ================= VIDEO ================= */
 .seccion-video {
-  padding: 3rem;
+  padding: 3rem 20px;
   text-align: center;
   background: #f4f7ff;
 }
 
 .video-wrapper {
   max-width: 800px;
-  margin: auto;
-  position: relative;
-  padding-top: 56%;
+  margin: 0 auto 2rem;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
 .video-wrapper iframe {
   position: absolute;
   width: 100%;
   height: 100%;
+  border: none;
+  display: block;
 }
 
 
