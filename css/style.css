@@ -578,7 +578,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('img/portada.png'); 
+  background-image: url('/img/portada.png'); 
   background-size: cover;
   background-position: center 55%;
   filter: brightness(0.38) saturate(0.9);
