@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tratamiento de Datos Personales</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header").innerHTML = data;
+  });
+</script>
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+<h1 class="titulo-seccion" style="text-align:center;">
+Tratamiento de Datos Personales
+</h1>
+
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+El objetivo de esta página es explicar los procedimientos y medidas que se aplican en el <strong>Proyecto EITEL</strong> para garantizar la protección de los datos personales, con especial énfasis en la anonimización y agregación de información. Estas medidas se implementan siguiendo las directrices del equipo legal del proyecto y en línea con los principios de gobernanza y minimización del riesgo de reidentificación.
+</p>
+
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+En particular, se establece como criterio operativo que, en los productos de datos destinados a consumo y publicación, las personas solo sean identificables como máximo a nivel de código postal, evitando granularidades que permitan trazar o inferir identidades a partir de ubicaciones más precisas u otros cuasi-identificadores.
+</p>
+
+<h2 class="titulo-seccion">Anonimización</h2>
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Objetivo
+</h3>
+
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+El proceso de anonimización aplicado en el tratamiento de los datos tiene la finalidad de asegurar que
+ninguno de los datos personales proporcionados por los ayuntamientos se vea comprometido, y que el
+riesgo de reidentificación se reduzca hasta niveles aceptables para los fines del proyecto.
+</p>
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Principios y alcance
+</h3>
+
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+La anonimización se concibe como una etapa integrada en el pipeline de datos, aplicada desde la ingesta
+y el preprocesado, y reforzada antes de la construcción de datasets de consumo. En este contexto se
+adoptan los siguientes principios:
+</p>
+
+<ul style="padding-left: 1.2em; margin-bottom: 2em;">
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Minimización:</strong> únicamente se conservan los campos necesarios para los objetivos
+    analíticos y de publicación.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Limitación de identificabilidad:</strong> se restringe la granularidad espacial a nivel de
+    código postal y se eliminan identificadores directos.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Reducción de trazabilidad:</strong> se controlan cuasi-identificadores y combinaciones de
+    atributos que puedan permitir inferencias.
+  </li>
+  <li style="text-align: justify; line-height: 1.6;">
+    <strong>Trazabilidad del proceso:</strong> se registran transformaciones y reglas aplicadas para
+    asegurar auditoría técnica del tratamiento.
+  </li>
+</ul>
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Técnicas aplicadas
+</h3>
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+Las técnicas de anonimización aplicadas se seleccionan en función del tipo de atributo y del riesgo de reidentificación asociado. De forma general, se aplican las siguientes:
+</p>
+
+<ul style="padding-left: 1.2em; margin-bottom: 2em;">
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Suspensión de identificadores directos:</strong> eliminación de campos como nombre, apellidos, documento de identidad, correo, teléfono, direcciones completas, identificadores internos y cualquier otro dato inequívoco.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Generalización de localización:</strong> sustitución de dirección u otras referencias espaciales por código postal como máximo nivel de detalle permitido.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Transformación de atributos potencialmente trazables:</strong> cuando determinados campos (por ejemplo, salario, ingresos, ayudas, importes) puedan llegar a ser identificadores, se procede a su transformación a rangos (p. ej., tramos de ingresos o intervalos de sueldo medio por unidad familiar), evitando valores exactos.
+  </li>
+  <li style="text-align: justify; line-height: 1.6;">
+    <strong>Redacción de texto libre:</strong> en campos como observaciones, descripciones o notas que puedan contener PII, se aplica eliminación o redacción ([REDACTED]), priorizando la prevención de filtrado incidental de información personal.
+  </li>
+</ul>
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Criterio de no trazabilidad por localización
+</h3>
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+Como requisito definido por las directrices legales del proyecto:
+</p>
+
+<ul style="padding-left: 1.2em; margin-bottom: 2em;">
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    No se publican coordenadas, direcciones, portales, ni referencias a ubicaciones a nivel de calle.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    La localización se limita a <strong>código postal</strong> en datasets de consumo y publicación.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    Cualquier atributo adicional que combinado con <strong>código postal</strong> pueda aumentar el riesgo de reidentificación (p. ej., fecha exacta, eventos únicos, importes exactos) se generaliza o transforma a rangos.
+  </li>
+</ul>
+
+<h2 class="titulo-seccion">Agregación de datos</h2>
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Objetivo
+</h3>
+
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+La agregación se aplica para construir productos de datos aptos para consumo analítico y publicación (p.ej., portal/catálogo), asegurando que la información:
+</p>
+
+<ul style="padding-left: 1.2em; margin-bottom: 2em;">
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    Sea útil para los objetivos del análisis de los datos y la visualización de los mismos.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    Mantenga privacidad de los implicados en el análisis.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    Reduzca al mínimo o anule la posibilidad de trazabilidad individual.
+  </li>
+</ul>
+
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Agregación espacial y eliminación de los identificadores
+</h3>
+
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+Siguiendo las directrices legales, durante la agregación:
+</p>
+
+<ul style="padding-left: 1.2em; margin-bottom: 2em;">
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    Se aplica <strong>anonimización de la localización:</strong> se conserva <strong>solo el código postal</strong> como granularidad espacial.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+   Se eliminan <strong>todos los identificadores directos</strong> y cualquier clave que permita enlazar con registros individuales (IDs internos, documentos, etc.).
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    No se publican claves técnicas de enlace (hashes) como identificadores de salida.
+  </li>
+</ul>
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Agregación por periodos y unidades
+</h3>
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+Además de la agregación espacial por código postal, se aplican agregaciones por dimensiones de análisis (según el caso de uso), por ejemplo:
+</p>
+
+<ul style="padding-left: 1.2em; margin-bottom: 2em;">
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Agregación temporal:</strong> agrupación por mes/trimestre/año cuando proceda, evitando fechas exactas.
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Agregación por unidad:</strong> por unidad familiar, tipología u otras categorías definidas, siempre evitando granularidades que identifiquen individuos.
+  </li>
+</ul>
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Transformación a rangos de atributos sensibles o trazables
+</h3>
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+En atributos con potencial trazabilidad, se aplica en ocasiones:
+</p>
+
+<ul style="padding-left: 1.2em; margin-bottom: 2em;">
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Rangos/intervalos</strong> en lugar de valores exactos (p. ej., tramos de renta o sueldo medio de una unidad familiar).
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Reducción de precisión</strong> (p. ej., redondeos y discretización) si aplica, para disminuir unicidad de registros agregados.
+  </li>
+</ul>  
+
+<h3 style="color: #002D72; margin-top: 1em; margin-bottom: 0.4em;">
+Controles de privacidad en agregación
+</h3>
+<p style="text-align: justify; line-height: 1.6; margin-bottom: 1.2em;">
+Para reforzar la no trazabilidad, en agregaciones se pueden aplicar controles adicionales:
+</p>
+
+<ul style="padding-left: 1.2em; margin-bottom: 2em;">
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Umbrales mínimos de agregación:</strong> evitar publicar agregados con baja cardinalidad (cuando el número de registros en un grupo sea demasiado pequeño).
+  </li>
+  <li style="text-align: justify; line-height: 1.6; margin-bottom: 0.8em;">
+    <strong>Revisión de combinaciones:</strong> detección de combinaciones de atributos que puedan generar grupos demasiado específicos.
+  </li>
+</ul>  
+
+</div>
 
