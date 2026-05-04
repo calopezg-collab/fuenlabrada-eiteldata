@@ -812,6 +812,134 @@
   }
 }
 
+/* ================= HERO PILOTOS ================= */
+.hero-pilotos {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-pilotos::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('img/hero-pilotos.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.35);
+}
+
+.hero-pilotos::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,19,132,0.5), rgba(0,0,0,0.3));
+}
+
+.hero-pilotos-box {
+  position: relative;
+  z-index: 2;
+  margin-left: 6%;
+  max-width: 450px;
+  background: rgba(0,10,60,0.7);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+}
+
+
+/* ================= INTRO ================= */
+.pilotos-intro {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 20px;
+}
+
+.pilotos-intro p {
+  text-align: justify;
+  color: #555;
+}
+
+
+/* ================= GRID 2x2 ================= */
+.pilotos-grid {
+  max-width: 1000px;
+  margin: 2rem auto 4rem;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+
+/* ================= TARJETAS ================= */
+.piloto-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 220px;
+  text-decoration: none;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.piloto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+}
+
+.piloto-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s;
+}
+
+.piloto-card:hover .piloto-card-bg {
+  transform: scale(1.05);
+}
+
+.piloto-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.piloto-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+  color: white;
+}
+
+.piloto-card-tag {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.piloto-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.piloto-card-desc {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 700px) {
+  .pilotos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* TIPO DE LETRA */
 body {
   font-family: Arial, Helvetica, sans-serif;
