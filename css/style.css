@@ -307,7 +307,15 @@
   padding: 20px 0;
   flex-wrap: wrap;
 }
-
+.footer-legal {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.5;
+  text-align: center;
+  padding: 0 20px;
+}
 /* tamaños */
 .footer-logos-bottom-eitel img {
   height: 100px;
