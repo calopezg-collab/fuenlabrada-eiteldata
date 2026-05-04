@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Casos de uso - EITEL Fuenlabrada</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("header").innerHTML = data);
+</script>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero-pilotos">
+  <div class="hero-pilotos-box">
+    <h1>Pilotos</h1>
+    <p class="hero-sub">Casos de uso creados con datos de energía</p>
+    <p>
+      Mediante el análisis de datos energéticos de distintas ciudades, se han desarrollado
+      diferentes pilotos orientados a mejorar la gestión energética en entornos urbanos.
+    </p>
+  </div>
+</section>
+
+
+<!-- ================= INTRO ================= -->
+<section class="pilotos-intro">
+  <h2 class="titulo-seccion">La energía de tu localidad, en un solo lugar</h2>
+  <p>
+    Accede a información clave sobre producción, consumo y características energéticas
+    de tu municipio para facilitar la toma de decisiones.
+  </p>
+</section>
+
+
+<!-- ================= GRID 2x2 ================= -->
+<div class="pilotos-grid">
+
+  <!-- Producción -->
+  <a href="#produccion" class="piloto-card">
+    <div class="piloto-card-bg" style="background-image: url('img/piloto-produccion.jpg');"></div>
+    <div class="piloto-card-overlay"></div>
+    <div class="piloto-card-content">
+      <p class="piloto-card-tag">Generación energética local</p>
+      <h3 class="piloto-card-title">Producción energética</h3>
+      <p class="piloto-card-desc">
+        Conoce las fuentes de generación disponibles en tu entorno
+      </p>
+    </div>
+  </a>
+
+  <!-- Consumo -->
+  <a href="#consumo" class="piloto-card">
+    <div class="piloto-card-bg" style="background-image: url('img/piloto-consumo.jpg');"></div>
+    <div class="piloto-card-overlay"></div>
+    <div class="piloto-card-content">
+      <p class="piloto-card-tag">Análisis de consumo</p>
+      <h3 class="piloto-card-title">Consumo energético</h3>
+      <p class="piloto-card-desc">
+        Datos de consumo energético por zonas y franjas horarias
+      </p>
+    </div>
+  </a>
+
+  <!-- Certificados -->
+  <a href="#certificados" class="piloto-card">
+    <div class="piloto-card-bg" style="background-image: url('img/piloto-certificados.jpg');"></div>
+    <div class="piloto-card-overlay"></div>
+    <div class="piloto-card-content">
+      <p class="piloto-card-tag">Eficiencia energética</p>
+      <h3 class="piloto-card-title">Certificados energéticos</h3>
+      <p class="piloto-card-desc">
+        Clasificación energética de edificios por zonas
+      </p>
+    </div>
+  </a>
+
+  <!-- Perfil -->
+  <a href="#perfil" class="piloto-card">
+    <div class="piloto-card-bg" style="background-image: url('img/piloto-perfil.jpg');"></div>
+    <div class="piloto-card-overlay"></div>
+    <div class="piloto-card-content">
+      <p class="piloto-card-tag">Segmentación urbana</p>
+      <h3 class="piloto-card-title">Perfil socioeconómico</h3>
+      <p class="piloto-card-desc">
+        Análisis de zonas según indicadores sociales y energéticos
+      </p>
+    </div>
+  </a>
+
+</div>
+
+
+<!-- FOOTER -->
+<div id="footer"></div>
+<script>
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+
+</body>
+</html>
