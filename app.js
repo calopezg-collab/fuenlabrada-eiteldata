@@ -1,5 +1,8 @@
 const assets = {
   panorama: "assets/panoramica-fuenlabrada.jpg",
+  townHallOld: "assets/ayuntamiento-fuenlabrada-antiguo.jpg",
+  culturalCenter: "assets/centro-cultural-fuenlabrada.jpg",
+  park: "assets/parque-fuenlabrada.jpg",
   cityIcon: "assets/fuenlabrada-icon.jpg",
   townHall: "assets/ayuntamiento-fuenlabrada.avif",
   carlosIII: "assets/PP3-Universidad-Carlos-III-de-Madrid.png",
@@ -153,9 +156,11 @@ function header() {
 }
 
 function hero(copy, compact = false) {
+  const image = copy.heroImage || assets.panorama;
+  const imageAlt = copy.heroAlt || "Vista panorámica de Fuenlabrada";
   return `
     <section class="hero ${compact ? "page-hero" : ""}">
-      <img src="${assets.panorama}" alt="Vista panorámica de Fuenlabrada">
+      <img src="${image}" alt="${imageAlt}">
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <p class="tag">${copy.tagline}</p>
@@ -285,7 +290,7 @@ function home(copy) {
 }
 
 function projectPage(copy) {
-  const pageCopy = { ...copy, tagline: "El Proyecto", hero: "EITEL Fuenlabrada: hogares saludables para el bienestar de la ciudadanía." };
+  const pageCopy = { ...copy, tagline: "El Proyecto", hero: "EITEL Fuenlabrada: hogares saludables para el bienestar de la ciudadanía.", heroImage: assets.townHallOld, heroAlt: "Antiguo Ayuntamiento de Fuenlabrada" };
   return hero(pageCopy, true) + `
     <section class="section article-page">
       ${sectionHeader("Unidad inteligente de vulnerabilidad energética", "Un servicio público preventivo, transversal y medible.", "EITEL adapta a Fuenlabrada la lógica de los proyectos europeos de innovación urbana: detectar pobreza energética oculta, intervenir con soluciones personalizadas y aprender de los datos para replicar el modelo.")}
@@ -319,7 +324,7 @@ function useCasesBlock() {
 }
 
 function monitoringPage(copy) {
-  return hero({ ...copy, tagline: "Monitorización", hero: "Sensores de confort para entender cómo se vive una vivienda.", strip: "Medición no invasiva, temporal y orientada a mejorar salud, confort y gasto energético." }, true) + `
+  return hero({ ...copy, tagline: "Monitorización", hero: "Sensores de confort para entender cómo se vive una vivienda.", strip: "Medición no invasiva, temporal y orientada a mejorar salud, confort y gasto energético.", heroImage: assets.culturalCenter, heroAlt: "Centro cultural de Fuenlabrada" }, true) + `
     <section class="section sensor-page sensor-intro">
       <div>
         <p class="eyebrow">Sensores de confort y aplicaciones</p>
@@ -387,20 +392,20 @@ function monitoringPage(copy) {
 }
 
 function privacyPage(copy) {
-  return hero({ ...copy, tagline: "Seguridad y privacidad", hero: "Un espacio de datos solo funciona si es seguro, transparente y gobernado.", strip: "EITEL prioriza confidencialidad, minimización, control de acceso y trazabilidad." }, true) + `
+  return hero({ ...copy, tagline: "Seguridad y privacidad", hero: "Un espacio de datos solo funciona si es seguro, transparente y gobernado.", strip: "EITEL prioriza confidencialidad, minimización, control de acceso y trazabilidad.", heroImage: assets.park, heroAlt: "Parque urbano de Fuenlabrada" }, true) + `
     <section class="section privacy-page">${sectionHeader("Ética del dato", "Privacidad desde el diseño.", "La información energética y social puede ayudar a mejorar vidas, pero debe gestionarse con reglas estrictas.")}<div class="privacy-list">${privacyItems.map((item) => `<article>${item}</article>`).join("")}</div></section>
     <section class="section treatment"><div><p class="eyebrow">Tratamiento de datos personales</p><h2>Anonimización, agregación y controles para reducir riesgos.</h2></div><div class="treatment-grid"><article><h3>Anonimización</h3><p>Se eliminan o transforman identificadores directos y se aplican técnicas para reducir el riesgo de reidentificación.</p></article><article><h3>Agregación</h3><p>Los indicadores se muestran por zonas, edificios o grupos suficientemente amplios para orientar decisiones sin exponer situaciones individuales.</p></article><article><h3>Acceso limitado</h3><p>Cada perfil accede solo a la información necesaria: visualización agregada, análisis técnico o gestión de casos, según permisos definidos.</p></article></div></section>`;
 }
 
-function listingPage(eyebrow, title, text, items, blog = false) {
-  return hero({ ...translations.es_ES, tagline: eyebrow, hero: title, strip: text }, true) + `
+function listingPage(eyebrow, title, text, items, blog = false, heroImage = assets.panorama, heroAlt = "Vista panorámica de Fuenlabrada") {
+  return hero({ ...translations.es_ES, tagline: eyebrow, hero: title, strip: text, heroImage, heroAlt }, true) + `
     <section class="section listing"><div class="listing-grid">
       ${items.map((item) => `<article class="listing-card"><span>${item[0]}</span><h3>${item[1]}</h3><p>${blog ? item[4] : item[3]}</p><small>${blog ? `${item[2]} · ${item[3]}` : item[2]}</small></article>`).join("")}
     </div></section>`;
 }
 
 function eventsPage(copy) {
-  return hero({ ...copy, tagline: "Eventos", hero: "Convocatorias, talleres y rutas para aprender energía desde el barrio.", strip: "Actividades gratuitas y abiertas para vecinos, comunidades y profesionales." }, true) + `
+  return hero({ ...copy, tagline: "Eventos", hero: "Convocatorias, talleres y rutas para aprender energía desde el barrio.", strip: "Actividades gratuitas y abiertas para vecinos, comunidades y profesionales.", heroImage: assets.culturalCenter, heroAlt: "Centro cultural de Fuenlabrada" }, true) + `
     <section class="section event-list">${events.map(([date, title, place, text]) => `<article><div class="event-date">${date}</div><div><h3>${title}</h3><p>${text}</p><strong>${place}</strong></div></article>`).join("")}</section>`;
 }
 
@@ -411,7 +416,7 @@ function resourcesPage(copy) {
     ["seguridad", "Seguridad y privacidad", "Ética, acceso, anonimización y gobernanza del espacio de datos."],
     ["proyecto", "Espacio de datos", "Visión, objetivos, metodología y socios del proyecto en Fuenlabrada."]
   ];
-  return hero({ ...copy, tagline: "Recursos", hero: "Herramientas prácticas para ahorrar energía y ganar confort.", strip: "Guías, fichas y modelos pensados para hogares, comunidades y equipos municipales." }, true) + `
+  return hero({ ...copy, tagline: "Recursos", hero: "Herramientas prácticas para ahorrar energía y ganar confort.", strip: "Guías, fichas y modelos pensados para hogares, comunidades y equipos municipales.", heroImage: assets.park, heroAlt: "Parque urbano de Fuenlabrada" }, true) + `
     <section class="section resources">
       <div class="resource-panel"><img src="${assets.people}" alt="Personas en una sesión participativa"><div><h2>Biblioteca EITEL</h2><p>Materiales preparados para consulta ciudadana. Los documentos definitivos podrán descargarse desde esta sección cuando la oficina publique cada versión.</p></div></div>
       <div class="resource-links">${links.map(([id, title, text]) => `<a href="#/${id}"><span>Página</span><h3>${title}</h3><p>${text}</p></a>`).join("")}</div>
@@ -420,7 +425,7 @@ function resourcesPage(copy) {
 }
 
 function contactPage(copy) {
-  return hero({ ...copy, tagline: "Contacto", hero: copy.contactTitle, strip: "Cuéntanos tu caso si necesitas revisar tu factura, mejorar el confort de tu vivienda o colaborar con el proyecto." }, true) + `
+  return hero({ ...copy, tagline: "Contacto", hero: copy.contactTitle, strip: "Cuéntanos tu caso si necesitas revisar tu factura, mejorar el confort de tu vivienda o colaborar con el proyecto.", heroImage: assets.townHallOld, heroAlt: "Antiguo Ayuntamiento de Fuenlabrada" }, true) + `
     <section class="section contact-layout">
       <div><p class="eyebrow">Oficina EITEL Fuenlabrada</p><h2>Atención presencial, telefónica y por correo.</h2><p>Plaza de la Constitución, 1. 28943 Fuenlabrada, Madrid.</p><p><strong>Teléfono:</strong> 010 / 91 649 70 00</p><p><strong>Email:</strong> eitel@fuenlabrada.es</p></div>
       <form class="contact-form"><label>Nombre<input type="text" placeholder="Tu nombre"></label><label>Email<input type="email" placeholder="tu@email.es"></label><label>Motivo<select><option>Factura energética</option><option>Bono social</option><option>Diagnóstico de vivienda</option><option>Colaborar</option></select></label><label>Mensaje<textarea rows="5" placeholder="Resume tu consulta"></textarea></label><button class="button" type="button">Enviar consulta</button></form>
@@ -438,9 +443,9 @@ function page() {
     proyecto: () => projectPage(copy),
     monitorizacion: () => monitoringPage(copy),
     seguridad: () => privacyPage(copy),
-    noticias: () => listingPage("Noticias", "Actualidad de EITEL Fuenlabrada.", "Avances del proyecto, colaboraciones y resultados del piloto municipal.", news),
+    noticias: () => listingPage("Noticias", "Actualidad de EITEL Fuenlabrada.", "Avances del proyecto, colaboraciones y resultados del piloto municipal.", news, false, assets.park, "Parque urbano de Fuenlabrada"),
     eventos: () => eventsPage(copy),
-    blog: () => listingPage("Blog", "Firmas y aprendizaje contra la pobreza energética.", "Reflexiones sobre datos urbanos, confort, rehabilitación, derechos y participación ciudadana.", blogPosts, true),
+    blog: () => listingPage("Blog", "Firmas y aprendizaje contra la pobreza energética.", "Reflexiones sobre datos urbanos, confort, rehabilitación, derechos y participación ciudadana.", blogPosts, true, assets.townHallOld, "Antiguo Ayuntamiento de Fuenlabrada"),
     recursos: () => resourcesPage(copy),
     contacto: () => contactPage(copy)
   };
