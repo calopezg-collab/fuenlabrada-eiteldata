@@ -847,6 +847,61 @@ h3 {
   line-height: 1.6;
 }
 
+.document-downloads {
+  padding-top: 56px;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.download-grid article {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(25, 174, 227, 0.12), rgba(255,255,255,0) 42%),
+    var(--white);
+  box-shadow: 0 18px 45px rgba(5, 45, 75, 0.08);
+}
+
+.download-grid span {
+  display: inline-flex;
+  margin-bottom: 16px;
+  padding: 7px 10px;
+  border-radius: 4px;
+  color: var(--white);
+  background: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.download-grid p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 12px;
+  padding: 12px 18px;
+  border-radius: 4px;
+  color: var(--white);
+  background: var(--navy);
+  font-weight: 900;
+}
+
+.download-button:hover {
+  background: var(--blue);
+}
+
 .privacy-list {
   grid-template-columns: repeat(5, 1fr);
 }
@@ -1100,6 +1155,7 @@ h3 {
   .sensor-gallery,
   .sensor-feature-grid,
   .sensor-measure-grid,
+  .download-grid,
   .privacy-list,
   .resource-links {
     grid-template-columns: 1fr 1fr;
@@ -1163,6 +1219,7 @@ h3 {
   .sensor-gallery,
   .sensor-feature-grid,
   .sensor-measure-grid,
+  .download-grid,
   .privacy-list,
   .resource-links {
     grid-template-columns: 1fr;

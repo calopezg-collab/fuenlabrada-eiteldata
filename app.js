@@ -20,7 +20,9 @@ const assets = {
   recuperacion: "assets/eitel-recuperacion-transformacion.png",
   fuenlabrada2030: "assets/logo-fuenlabrada-2030.png",
   sensorConfort: "assets/sensor-confort.png",
-  sensorConfortSalon: "assets/sensor-confort-salon.jpg"
+  sensorConfortSalon: "assets/sensor-confort-salon.jpg",
+  autorizacionSensores: "assets/modelo-autorizacion-sensores.pdf",
+  autorizacionDatadis: "assets/modelo-autorizacion-datadis.pdf"
 };
 
 const navItems = [
@@ -373,6 +375,13 @@ function monitoringPage(copy) {
         <article><h3>No manipular</h3><p>No debe abrirse, pintarse ni cubrirse, ya que esto invalidaría las lecturas de calidad del aire y confort térmico.</p></article>
       </div>
       <div class="responsibility-panel"><h3>Exoneración de responsabilidad</h3><p>El Ayuntamiento y las entidades colaboradoras, como la Universidad Carlos III de Madrid, quedan exonerados de cualquier responsabilidad derivada del uso inadecuado del dispositivo, de daños causados por el incumplimiento de las normas de conservación o de cualquier incidente fortuito ajeno al funcionamiento técnico intrínseco del sensor. La persona interesada asume la custodia del equipo y se compromete a un trato diligente durante la vigencia del proyecto.</p></div>
+    </section>
+    <section class="section document-downloads">
+      ${sectionHeader("Modelos de autorización", "Documentación para participar en la monitorización.", "Estos modelos permiten formalizar la cesión temporal del sensor de confort y autorizar la consulta de datos energéticos necesarios para el diagnóstico técnico del hogar.")}
+      <div class="download-grid">
+        <article><span>PDF</span><h3>Autorización para sensores</h3><p>Documento para aceptar la instalación temporal del sensor de confort, su uso responsable y el tratamiento de los datos ambientales medidos en la vivienda.</p><a class="download-button" href="${assets.autorizacionSensores}" download>Descargar modelo</a></article>
+        <article><span>PDF</span><h3>Autorización Datadis</h3><p>Modelo para permitir la consulta técnica de datos de consumo eléctrico a través de Datadis, con el fin de elaborar recomendaciones de ahorro y confort.</p><a class="download-button" href="${assets.autorizacionDatadis}" download>Descargar modelo</a></article>
+      </div>
     </section>
     <section class="section article-page">${sectionHeader("Uso responsable", "Cesión temporal, seguridad y acompañamiento técnico.")}<div class="article-grid"><article><h3>Beneficios para el hogar</h3><p>Alertas de confort, recomendaciones concretas, mejor ajuste de hábitos y una conversación técnica basada en condiciones reales.</p></article><article><h3>Beneficios para el ayuntamiento</h3><p>Priorización de ayudas, detección temprana de vulnerabilidad, seguimiento de intervenciones y mejora de políticas públicas.</p></article></div></section>`;
 }
