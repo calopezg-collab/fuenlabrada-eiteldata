@@ -18,7 +18,9 @@ const assets = {
   ue: "assets/eitel-ue.jpg",
   ministerio: "assets/eitel-ministerio.png",
   recuperacion: "assets/eitel-recuperacion-transformacion.png",
-  fuenlabrada2030: "assets/logo-fuenlabrada-2030.png"
+  fuenlabrada2030: "assets/logo-fuenlabrada-2030.png",
+  sensorConfort: "assets/sensor-confort.png",
+  sensorConfortSalon: "assets/sensor-confort-salon.jpg"
 };
 
 const navItems = [
@@ -77,10 +79,10 @@ const useCases = [
 ];
 
 const sensorIndicators = [
-  "Temperatura interior: permite detectar frío o calor inadecuado en la vivienda.",
-  "Humedad relativa: ayuda a prevenir condensaciones, moho y problemas de habitabilidad.",
-  "Calidad ambiental: ofrece pistas sobre ventilación y confort cotidiano.",
-  "Presencia no invasiva: no usa cámaras ni micrófonos; ayuda a contextualizar hábitos de uso."
+  ["Temperatura", "Permite detectar si la vivienda está dentro de umbrales de bienestar y confort o si existe un gasto excesivo o muy escaso en calefacción o refrigeración."],
+  ["Humedad relativa", "Fundamental para prevenir moho y condensaciones que pueden agravar enfermedades respiratorias, asma o alergias."],
+  ["CO2", "Indica la calidad del aire y la necesidad de ventilación. Un nivel alto afecta al descanso, la concentración y el bienestar diario."],
+  ["Presencia", "Ayuda a entender cuándo está habitada la casa para ajustar los consejos de ahorro energético a los hábitos reales de la familia."]
 ];
 
 const privacyItems = [
@@ -316,9 +318,61 @@ function useCasesBlock() {
 
 function monitoringPage(copy) {
   return hero({ ...copy, tagline: "Monitorización", hero: "Sensores de confort para entender cómo se vive una vivienda.", strip: "Medición no invasiva, temporal y orientada a mejorar salud, confort y gasto energético." }, true) + `
-    <section class="section sensor-page">
-      <div><p class="eyebrow">Sensor confort</p><h2>Una herramienta pequeña para detectar riesgos que no siempre se ven.</h2><p>El sensor de confort monitoriza condiciones de habitabilidad en viviendas vulnerables. No utiliza cámaras ni micrófonos; su objetivo es medir variables ambientales para generar recomendaciones útiles y priorizar asistencia.</p><p>La información permite identificar situaciones críticas, ajustar consejos de ahorro y detectar pobreza energética escondida.</p></div>
-      <div class="sensor-card">${sensorIndicators.map((item) => `<article>${item}</article>`).join("")}</div>
+    <section class="section sensor-page sensor-intro">
+      <div>
+        <p class="eyebrow">Sensores de confort y aplicaciones</p>
+        <h2>Herramienta de apoyo para el bienestar y la eficiencia energética de los hogares.</h2>
+        <p>El sensor de confort es un dispositivo diseñado para monitorizar de forma no invasiva las condiciones de habitabilidad en viviendas.</p>
+        <p>Es compacto, discreto y de titularidad municipal. Su objetivo es ayudar a cada hogar a conocer mejor su temperatura, humedad, calidad del aire y uso real de la vivienda para recibir recomendaciones técnicas más útiles.</p>
+      </div>
+      <div class="sensor-gallery">
+        <figure><img src="${assets.sensorConfort}" alt="Sensor Confort Medidas"><figcaption>Sensor Confort Medidas</figcaption></figure>
+        <figure><img src="${assets.sensorConfortSalon}" alt="Sensor Confort Salón"><figcaption>Sensor Confort Salón</figcaption></figure>
+      </div>
+    </section>
+    <section class="section sensor-detail">
+      ${sectionHeader("Qué es el sensor confort", "Un dispositivo pequeño para detectar riesgos que no siempre se ven.", "Mide cada 15 minutos los parámetros que ayudan a saber si una vivienda es saludable y eficiente. El equipo mide 88x88x25 mm, está fabricado en material blanco y se instala de forma discreta en la vivienda.")}
+      <div class="sensor-card sensor-feature-grid">
+        <article><h3>Autónomo</h3><p>Funciona con baterías, con una duración aproximada de dos años. No consume electricidad del hogar ni requiere cables.</p></article>
+        <article><h3>Conectividad LoRaWAN</h3><p>Envía datos de forma inalámbrica a larga distancia sin necesidad de tener Wi-Fi en la vivienda.</p></article>
+        <article><h3>Privacidad</h3><p>No utiliza cámaras ni micrófonos. Solo detecta presencia mediante un sensor infrarrojo de movimiento con alcance aproximado de 5 metros.</p></article>
+        <article><h3>Datos protegidos</h3><p>La información es confidencial y solo se usará para informar y asesorar técnicamente a los hogares participantes.</p></article>
+      </div>
+    </section>
+    <section class="section sensor-detail">
+      ${sectionHeader("Qué mide y para qué sirve", "Cuatro indicadores críticos para la salud y la economía familiar.")}
+      <div class="sensor-card sensor-measure-grid">
+        ${sensorIndicators.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}
+      </div>
+    </section>
+    <section class="section sensor-detail">
+      ${sectionHeader("Beneficios directos para el hogar", "Diagnóstico ambiental, alertas tempranas y mejores decisiones cotidianas.")}
+      <div class="article-grid">
+        <article><h3>Diagnóstico de salud ambiental</h3><p>Permite avisar a la familia si los niveles de humedad o CO2 son de riesgo antes de que aparezcan humedades visibles o problemas de salud.</p></article>
+        <article><h3>Riesgo biológico</h3><p>Una humedad por encima del 70 % durante periodos largos favorece la aparición de moho, hongos y ácaros.</p></article>
+        <article><h3>Aire viciado</h3><p>Un CO2 por encima de 1000 ppm indica que la vivienda no se ventila lo suficiente, a menudo para no perder calor.</p></article>
+        <article><h3>Frío severo y calor extremo</h3><p>Temperaturas por debajo de 16 ºC o por encima de 27 ºC con presencia detectada pueden indicar riesgo para la salud.</p></article>
+      </div>
+      <p class="sensor-note">El cruce de estos datos permite definir indicadores de salud y confort en el hogar. Con plataformas de visualización y análisis, podrían enviarse notificaciones por WhatsApp o correo electrónico para que las personas residentes se mantengan informadas y tomen medidas para mejorar su bienestar.</p>
+    </section>
+    <section class="section sensor-detail">
+      ${sectionHeader("Interacción con el Ayuntamiento", "Datos útiles para acompañar mejor a cada hogar y priorizar recursos públicos.")}
+      <div class="article-grid">
+        <article><h3>Asesoramiento personalizado</h3><p>Los técnicos energéticos pueden recomendar cómo optimizar la factura de electricidad o gas basándose en condiciones reales de la vivienda.</p></article>
+        <article><h3>Justificación para ayudas</h3><p>Los datos sirven como prueba técnica de que la vivienda necesita mejoras, como aislamiento, cambio de ventanas o rehabilitación energética.</p></article>
+        <article><h3>Optimización del bono social</h3><p>Permite identificar pobreza energética escondida en familias que no encienden la calefacción por miedo al gasto.</p></article>
+        <article><h3>Seguimiento municipal</h3><p>Facilita valorar si las intervenciones mejoran el confort y ayudan a diseñar políticas públicas más precisas.</p></article>
+      </div>
+    </section>
+    <section class="section sensor-detail">
+      ${sectionHeader("Titularidad, reposición y seguridad", "Cesión temporal del equipo durante el proyecto EITEL.")}
+      <div class="article-grid">
+        <article><h3>Titularidad municipal</h3><p>El sensor suministrado es un equipo de titularidad municipal cedido temporalmente para el desarrollo del proyecto EITEL.</p></article>
+        <article><h3>Reposición</h3><p>Si se detecta cualquier anomalía, mal funcionamiento o daño accidental, la persona interesada deberá informar al Ayuntamiento para su revisión o reposición.</p></article>
+        <article><h3>Uso y conservación</h3><p>El sensor debe permanecer en la ubicación instalada, en un ambiente seco, alejado de fuentes de calor extremo y fuera del alcance de niños.</p></article>
+        <article><h3>No manipular</h3><p>No debe abrirse, pintarse ni cubrirse, ya que esto invalidaría las lecturas de calidad del aire y confort térmico.</p></article>
+      </div>
+      <div class="responsibility-panel"><h3>Exoneración de responsabilidad</h3><p>El Ayuntamiento y las entidades colaboradoras, como la Universidad Carlos III de Madrid, quedan exonerados de cualquier responsabilidad derivada del uso inadecuado del dispositivo, de daños causados por el incumplimiento de las normas de conservación o de cualquier incidente fortuito ajeno al funcionamiento técnico intrínseco del sensor. La persona interesada asume la custodia del equipo y se compromete a un trato diligente durante la vigencia del proyecto.</p></div>
     </section>
     <section class="section article-page">${sectionHeader("Uso responsable", "Cesión temporal, seguridad y acompañamiento técnico.")}<div class="article-grid"><article><h3>Beneficios para el hogar</h3><p>Alertas de confort, recomendaciones concretas, mejor ajuste de hábitos y una conversación técnica basada en condiciones reales.</p></article><article><h3>Beneficios para el ayuntamiento</h3><p>Priorización de ayudas, detección temprana de vulnerabilidad, seguimiento de intervenciones y mejora de políticas públicas.</p></article></div></section>`;
 }

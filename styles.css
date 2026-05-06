@@ -759,6 +759,94 @@ h3 {
   border-left: 8px solid var(--sky);
 }
 
+.sensor-intro {
+  align-items: start;
+}
+
+.sensor-gallery {
+  display: grid;
+  grid-template-columns: 0.86fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.sensor-gallery figure {
+  min-height: 360px;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.sensor-gallery img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  background: var(--ice);
+}
+
+.sensor-gallery figure:first-child img {
+  object-fit: contain;
+  padding: 22px;
+}
+
+.sensor-gallery figcaption {
+  padding: 14px 18px 16px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-top: 1px solid var(--line);
+}
+
+.sensor-detail {
+  padding-top: 56px;
+}
+
+.sensor-feature-grid,
+.sensor-measure-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.sensor-card h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.sensor-card p {
+  margin: 0;
+}
+
+.sensor-note,
+.responsibility-panel {
+  margin: 24px 0 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-left: 8px solid var(--blue);
+  border-radius: 8px;
+  color: var(--muted);
+  background: var(--white);
+  box-shadow: 0 18px 45px rgba(5, 45, 75, 0.08);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.responsibility-panel h3 {
+  margin-bottom: 10px;
+}
+
+.responsibility-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
 .privacy-list {
   grid-template-columns: repeat(5, 1fr);
 }
@@ -1009,6 +1097,9 @@ h3 {
   .resource-grid,
   .objective-grid,
   .usecase-grid,
+  .sensor-gallery,
+  .sensor-feature-grid,
+  .sensor-measure-grid,
   .privacy-list,
   .resource-links {
     grid-template-columns: 1fr 1fr;
@@ -1069,9 +1160,20 @@ h3 {
   .resource-grid,
   .objective-grid,
   .usecase-grid,
+  .sensor-gallery,
+  .sensor-feature-grid,
+  .sensor-measure-grid,
   .privacy-list,
   .resource-links {
     grid-template-columns: 1fr;
+  }
+
+  .sensor-gallery figure {
+    min-height: auto;
+  }
+
+  .sensor-gallery img {
+    min-height: 260px;
   }
 
   .event-list article {
