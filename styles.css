@@ -705,6 +705,41 @@ h3 {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.video-panel {
+  display: grid;
+  grid-template-columns: minmax(420px, 1.05fr) minmax(280px, 0.75fr);
+  gap: 24px;
+  align-items: center;
+  margin: 0 0 28px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.video-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--navy);
+  aspect-ratio: 16 / 9;
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-panel p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
 .usecase-grid span,
 .resource-links span {
   display: block;
@@ -722,6 +757,149 @@ h3 {
 
 .sensor-card article {
   border-left: 8px solid var(--sky);
+}
+
+.sensor-intro {
+  align-items: start;
+}
+
+.sensor-gallery {
+  display: grid;
+  grid-template-columns: 0.86fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.sensor-gallery figure {
+  min-height: 360px;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.sensor-gallery img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  background: var(--ice);
+}
+
+.sensor-gallery figure:first-child img {
+  object-fit: contain;
+  padding: 22px;
+}
+
+.sensor-gallery figcaption {
+  padding: 14px 18px 16px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-top: 1px solid var(--line);
+}
+
+.sensor-detail {
+  padding-top: 56px;
+}
+
+.sensor-feature-grid,
+.sensor-measure-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.sensor-card h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.sensor-card p {
+  margin: 0;
+}
+
+.sensor-note,
+.responsibility-panel {
+  margin: 24px 0 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-left: 8px solid var(--blue);
+  border-radius: 8px;
+  color: var(--muted);
+  background: var(--white);
+  box-shadow: 0 18px 45px rgba(5, 45, 75, 0.08);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.responsibility-panel h3 {
+  margin-bottom: 10px;
+}
+
+.responsibility-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.document-downloads {
+  padding-top: 56px;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.download-grid article {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(25, 174, 227, 0.12), rgba(255,255,255,0) 42%),
+    var(--white);
+  box-shadow: 0 18px 45px rgba(5, 45, 75, 0.08);
+}
+
+.download-grid span {
+  display: inline-flex;
+  margin-bottom: 16px;
+  padding: 7px 10px;
+  border-radius: 4px;
+  color: var(--white);
+  background: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.download-grid p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 12px;
+  padding: 12px 18px;
+  border-radius: 4px;
+  color: var(--white);
+  background: var(--navy);
+  font-weight: 900;
+}
+
+.download-button:hover {
+  background: var(--blue);
 }
 
 .privacy-list {
@@ -962,7 +1140,8 @@ h3 {
   .image-narrative,
   .sensor-page,
   .treatment,
-  .funding-strip {
+  .funding-strip,
+  .video-panel {
     grid-template-columns: 1fr;
   }
 
@@ -973,6 +1152,10 @@ h3 {
   .resource-grid,
   .objective-grid,
   .usecase-grid,
+  .sensor-gallery,
+  .sensor-feature-grid,
+  .sensor-measure-grid,
+  .download-grid,
   .privacy-list,
   .resource-links {
     grid-template-columns: 1fr 1fr;
@@ -1033,9 +1216,21 @@ h3 {
   .resource-grid,
   .objective-grid,
   .usecase-grid,
+  .sensor-gallery,
+  .sensor-feature-grid,
+  .sensor-measure-grid,
+  .download-grid,
   .privacy-list,
   .resource-links {
     grid-template-columns: 1fr;
+  }
+
+  .sensor-gallery figure {
+    min-height: auto;
+  }
+
+  .sensor-gallery img {
+    min-height: 260px;
   }
 
   .event-list article {
