@@ -24,7 +24,6 @@ const assets = {
 const navItems = [
   ["inicio", "Inicio"],
   ["proyecto", "El Proyecto"],
-  ["casos", "Casos de uso"],
   ["monitorizacion", "Monitorización"],
   ["noticias", "Noticias"],
   ["eventos", "Eventos"],
@@ -36,7 +35,7 @@ const navItems = [
 const translations = {
   es_ES: {
     tagline: "Proyecto municipal EITEL",
-    hero: "Descubre nuestro proyecto EITEL Fuenlabrada, que promueve hogares sin pobreza energética en sus barrios.",
+    hero: "Fuenlabrada participa en EITEL para medir y reducir la pobreza energética en los hogares del municipio.",
     strip: "La pobreza energética afecta a entre un 20 o un 25 % de la ciudadanía en España.",
     cta: "Solicitar información",
     secondary: "Ver recursos",
@@ -188,8 +187,8 @@ function projectSummary(copy) {
     <section class="section intro">
       <div><p class="eyebrow">El Proyecto</p><h2>${copy.projectTitle}</h2></div>
       <div class="intro-copy">
-        <p>Inspirado por la metodología de Hogares Saludables, EITEL Fuenlabrada plantea una unidad de inteligencia energética capaz de identificar hogares en riesgo, atender casos prioritarios y diseñar soluciones personalizadas.</p>
-        <p>El enfoque combina tres escalas: vivienda, edificio y barrio. La prioridad no es solo pagar menos, sino vivir mejor: temperatura adecuada, salud, seguridad de suministro y autonomía ciudadana.</p>
+        <p>Esta web municipal explica cómo participa Fuenlabrada en EITEL y qué puede aportar la ciudadanía para conocer mejor la pobreza energética real de los barrios.</p>
+        <p>La prioridad es medir el confort de las viviendas, detectar situaciones invisibles y orientar mejor las ayudas. Los sensores de confort permiten hacerlo de forma temporal, no invasiva y acompañada por equipos técnicos.</p>
       </div>
     </section>`;
 }
@@ -278,7 +277,7 @@ function fundingStrip() {
 }
 
 function home(copy) {
-  return hero(copy) + dataSpaceIntro() + projectSummary(copy) + metricsBlock() + focusGrid() + objectiveGrid() + mapStory() + latestPreview() + partners() + office() + fundingStrip();
+  return hero(copy) + projectSummary(copy) + metricsBlock() + focusGrid() + latestPreview() + office() + fundingStrip();
 }
 
 function projectPage(copy) {
@@ -294,11 +293,11 @@ function projectPage(copy) {
       </div>
     </section>
     <section class="section image-narrative"><img src="${assets.torres}" alt="Torres y paisaje urbano de Fuenlabrada"><div><p class="eyebrow">Fuenlabrada como laboratorio urbano</p><h2>El proyecto conecta energía, vivienda y decisión pública.</h2><p>La experiencia anterior de EITEL define el espacio de datos como una herramienta para gobiernos locales. En esta web lo acercamos a la ciudadanía: qué se mide, por qué se mide, cómo se protege y qué decisiones permite tomar.</p></div></section>
-  ` + objectiveGrid() + focusGrid() + partners() + fundingStrip();
+  ` + dataSpaceIntro() + objectiveGrid() + useCasesBlock() + focusGrid() + mapStory() + partners() + fundingStrip();
 }
 
-function useCasesPage(copy) {
-  return hero({ ...copy, tagline: "Casos de uso", hero: "La energía de tu localidad, en un solo lugar.", strip: "Pilotos creados con datos energéticos para facilitar decisiones urbanas." }, true) + `
+function useCasesBlock() {
+  return `
     <section class="section use-cases">
       ${sectionHeader("Pilotos EITEL", "Cuatro casos para convertir datos en acción municipal.", "La página anterior de EITEL proponía pilotos de producción, consumo, certificados y perfil socioeconómico. Los desarrollamos aquí con enfoque Fuenlabrada.")}
       <div class="video-panel">
@@ -312,8 +311,7 @@ function useCasesPage(copy) {
         </div>
       </div>
       <div class="usecase-grid">${useCases.map(([tag, title, text]) => `<article><span>${tag}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div>
-    </section>
-  ` + mapStory();
+    </section>`;
 }
 
 function monitoringPage(copy) {
@@ -345,7 +343,7 @@ function eventsPage(copy) {
 
 function resourcesPage(copy) {
   const links = [
-    ["casos", "Casos de uso EITEL", "Producción, consumo, certificados energéticos y perfil socioeconómico."],
+    ["proyecto", "Casos de uso EITEL", "Producción, consumo, certificados energéticos y perfil socioeconómico."],
     ["monitorizacion", "Monitorización y sensores", "Qué mide el sensor confort, para qué sirve y cómo se usa."],
     ["seguridad", "Seguridad y privacidad", "Ética, acceso, anonimización y gobernanza del espacio de datos."],
     ["proyecto", "Espacio de datos", "Visión, objetivos, metodología y socios del proyecto en Fuenlabrada."]
@@ -375,7 +373,6 @@ function page() {
   const pages = {
     inicio: () => home(copy),
     proyecto: () => projectPage(copy),
-    casos: () => useCasesPage(copy),
     monitorizacion: () => monitoringPage(copy),
     seguridad: () => privacyPage(copy),
     noticias: () => listingPage("Noticias", "Actualidad de EITEL Fuenlabrada.", "Avances del proyecto, colaboraciones y resultados del piloto municipal.", news),
