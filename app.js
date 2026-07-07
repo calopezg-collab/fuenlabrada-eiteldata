@@ -28,6 +28,8 @@ const assets = {
   autorizacionDatadis: "assets/modelo-autorizacion-datadis.pdf"
 };
 
+const contactEmail = "eitel@fuenlabrada.es";
+
 const navItems = [
   ["inicio", "Inicio"],
   ["proyecto", "El Proyecto"],
@@ -36,7 +38,22 @@ const navItems = [
   ["eventos", "Eventos"],
   ["blog", "Blog"],
   ["recursos", "Recursos"],
+  ["faq", "FAQ"],
+  ["buscar", "Buscar"],
   ["contacto", "Contacto"]
+];
+
+const pageLabels = {
+  ...Object.fromEntries(navItems),
+  seguridad: "Seguridad y privacidad"
+};
+
+const legalLinks = [
+  ["Aviso Legal", "https://www.ayto-fuenlabrada.es/web/portal/aviso-legal"],
+  ["Protección de datos", "https://www.ayto-fuenlabrada.es/web/portal/proteccion-datos"],
+  ["Política de Cookies", "https://www.ayto-fuenlabrada.es/web/portal/politica-cookies"],
+  ["Accesibilidad", "https://www.ayto-fuenlabrada.es/web/portal/accesibilidad"],
+  ["Mapa Web", "sitemap.xml"]
 ];
 
 const translations = {
@@ -126,8 +143,18 @@ const resources = [
   "Preguntas frecuentes sobre bono social, cortes de suministro y derechos."
 ];
 
+const faqs = [
+  ["¿Qué es EITEL Fuenlabrada?", "Es un proyecto municipal para medir, comprender y reducir la pobreza energética mediante datos de vivienda, consumo, confort interior y contexto urbano."],
+  ["¿Para qué sirve el sensor de confort?", "Permite conocer temperatura, humedad, CO2 y presencia sin cámaras ni micrófonos, para orientar recomendaciones técnicas y detectar riesgos de habitabilidad."],
+  ["¿Quién puede solicitar información?", "Hogares, comunidades de propietarios, entidades vecinales y profesionales que necesiten información sobre ahorro energético, confort, bono social o participación en el piloto."],
+  ["¿Qué datos se tratan?", "Solo los datos necesarios para el diagnóstico y el acompañamiento técnico. El proyecto prioriza minimización, agregación, control de acceso y trazabilidad."],
+  ["¿Dónde puedo descargar autorizaciones?", "Los modelos de autorización para sensores y Datadis están disponibles en la página de Monitorización."],
+  ["¿Cómo contacto con la oficina EITEL?", `Puedes llamar al 010 / 91 649 70 00 o escribir a ${contactEmail}. El formulario de contacto prepara un correo con la consulta introducida.`]
+];
+
 let route = getRoute();
 let lang = "es_ES";
+let searchQuery = "";
 
 function getRoute() {
   return location.hash.replace("#/", "") || "inicio";
@@ -135,6 +162,27 @@ function getRoute() {
 
 function go(nextRoute) {
   location.hash = `/${nextRoute}`;
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[char]));
+}
+
+function breadcrumb() {
+  if (route === "inicio") return "";
+  const current = pageLabels[route] || "Inicio";
+  return `
+    <nav class="breadcrumb" aria-label="Miga de pan">
+      <a href="#/inicio">Inicio</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">${current}</span>
+    </nav>`;
 }
 
 function header() {
@@ -163,6 +211,7 @@ function hero(copy, compact = false) {
       <img src="${image}" alt="${imageAlt}">
       <div class="hero-overlay"></div>
       <div class="hero-content">
+        ${compact ? breadcrumb() : ""}
         <p class="tag">${copy.tagline}</p>
         <h1>${copy.hero}</h1>
         <div class="impact-strip"><span></span><p>${copy.strip}</p></div>
@@ -414,7 +463,7 @@ function resourcesPage(copy) {
     ["proyecto", "Casos de uso EITEL", "Producción, consumo, certificados energéticos y perfil socioeconómico."],
     ["monitorizacion", "Monitorización y sensores", "Qué mide el sensor confort, para qué sirve y cómo se usa."],
     ["seguridad", "Seguridad y privacidad", "Ética, acceso, anonimización y gobernanza del espacio de datos."],
-    ["proyecto", "Espacio de datos", "Visión, objetivos, metodología y socios del proyecto en Fuenlabrada."]
+    ["faq", "Preguntas frecuentes", "Respuestas rápidas sobre participación, sensores, privacidad y contacto."]
   ];
   return hero({ ...copy, tagline: "Recursos", hero: "Herramientas prácticas para ahorrar energía y ganar confort.", strip: "Guías, fichas y modelos pensados para hogares, comunidades y equipos municipales.", heroImage: assets.park, heroAlt: "Parque urbano de Fuenlabrada" }, true) + `
     <section class="section resources">
@@ -424,16 +473,71 @@ function resourcesPage(copy) {
     </section>`;
 }
 
+function faqPage(copy) {
+  return hero({ ...copy, tagline: "Preguntas frecuentes", hero: "Respuestas rápidas sobre EITEL Fuenlabrada.", strip: "Información básica para hogares, comunidades y entidades interesadas.", heroImage: assets.park, heroAlt: "Parque urbano de Fuenlabrada" }, true) + `
+    <section class="section faq-page">
+      ${sectionHeader("FAQ", "Consultas habituales del proyecto.", "Contenido inicial pendiente de ampliar con las preguntas definitivas que facilite el Ayuntamiento.")}
+      <div class="faq-list">
+        ${faqs.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join("")}
+      </div>
+    </section>`;
+}
+
+function searchItems() {
+  return [
+    ["inicio", "Inicio", "Resumen del proyecto municipal EITEL, pobreza energética, hogares saludables y oficina de atención."],
+    ["proyecto", "El Proyecto", "Objetivos, metodología, pilotos, espacio de datos, socios, eficiencia energética y vulnerabilidad."],
+    ["monitorizacion", "Monitorización", "Sensores de confort, temperatura, humedad, CO2, presencia, autorizaciones y Datadis."],
+    ["seguridad", "Seguridad y privacidad", privacyItems.join(" ")],
+    ["noticias", "Noticias", news.flat().join(" ")],
+    ["eventos", "Eventos", events.flat().join(" ")],
+    ["blog", "Blog", blogPosts.flat().join(" ")],
+    ["recursos", "Recursos", resources.join(" ")],
+    ["faq", "Preguntas frecuentes", faqs.flat().join(" ")],
+    ["contacto", "Contacto", `Formulario, teléfono, correo electrónico, oficina EITEL, ${contactEmail}.`]
+  ];
+}
+
+function searchPage(copy) {
+  const query = searchQuery.trim().toLowerCase();
+  const results = query
+    ? searchItems().filter(([, title, text]) => `${title} ${text}`.toLowerCase().includes(query))
+    : searchItems();
+  return hero({ ...copy, tagline: "Buscador", hero: "Encuentra información del proyecto EITEL.", strip: "Busca por sensores, privacidad, ayudas, eventos, recursos o contacto.", heroImage: assets.panorama, heroAlt: "Vista panorámica de Fuenlabrada" }, true) + `
+    <section class="section search-page">
+      <label class="search-box" for="site-search">Buscar en el sitio
+        <input id="site-search" type="search" value="${escapeHtml(searchQuery)}" placeholder="Ej. sensores, privacidad, bono social" autocomplete="off">
+      </label>
+      <div class="search-results" aria-live="polite">
+        ${results.length ? results.map(([id, title, text]) => `<a href="#/${id}"><span>${title}</span><p>${text}</p></a>`).join("") : `<p>No se han encontrado resultados para "${escapeHtml(searchQuery)}".</p>`}
+      </div>
+    </section>`;
+}
+
 function contactPage(copy) {
   return hero({ ...copy, tagline: "Contacto", hero: copy.contactTitle, strip: "Cuéntanos tu caso si necesitas revisar tu factura, mejorar el confort de tu vivienda o colaborar con el proyecto.", heroImage: assets.townHallOld, heroAlt: "Antiguo Ayuntamiento de Fuenlabrada" }, true) + `
     <section class="section contact-layout">
-      <div><p class="eyebrow">Oficina EITEL Fuenlabrada</p><h2>Atención presencial, telefónica y por correo.</h2><p>Plaza de la Constitución, 1. 28943 Fuenlabrada, Madrid.</p><p><strong>Teléfono:</strong> 010 / 91 649 70 00</p><p><strong>Email:</strong> eitel@fuenlabrada.es</p></div>
-      <form class="contact-form"><label>Nombre<input type="text" placeholder="Tu nombre"></label><label>Email<input type="email" placeholder="tu@email.es"></label><label>Motivo<select><option>Factura energética</option><option>Bono social</option><option>Diagnóstico de vivienda</option><option>Colaborar</option></select></label><label>Mensaje<textarea rows="5" placeholder="Resume tu consulta"></textarea></label><button class="button" type="button">Enviar consulta</button></form>
+      <div><p class="eyebrow">Oficina EITEL Fuenlabrada</p><h2>Atención presencial, telefónica y por correo.</h2><p>Plaza de la Constitución, 1. 28943 Fuenlabrada, Madrid.</p><p><strong>Teléfono:</strong> 010 / 91 649 70 00</p><p><strong>Email:</strong> ${contactEmail}</p></div>
+      <form class="contact-form" id="contact-form">
+        <label>Nombre y apellidos<input name="name" type="text" placeholder="Tu nombre" autocomplete="name" required></label>
+        <label>Correo electrónico<input name="email" type="email" placeholder="tu@email.es" autocomplete="email" required></label>
+        <label>Motivo<select name="subject" required><option value="">Selecciona un motivo</option><option>Factura energética</option><option>Bono social</option><option>Diagnóstico de vivienda</option><option>Colaborar</option><option>Otra consulta</option></select></label>
+        <label>Mensaje<textarea name="message" rows="5" placeholder="Resume tu consulta" required></textarea></label>
+        <p class="form-note">Todos los campos son obligatorios. Al enviar se abrirá tu cliente de correo con la consulta preparada.</p>
+        <button class="button" type="submit">Enviar consulta</button>
+      </form>
     </section>`;
 }
 
 function footer() {
-  return `<footer class="site-footer"><div><strong>EITEL Fuenlabrada</strong><span>Hogares sin pobreza energética</span></div><div><a href="mailto:eitel@fuenlabrada.es">eitel@fuenlabrada.es</a><span>010 / 91 649 70 00</span></div></footer>`;
+  return `
+    <footer class="site-footer">
+      <div><strong>EITEL Fuenlabrada</strong><span>Hogares sin pobreza energética</span></div>
+      <div><a href="mailto:${contactEmail}">${contactEmail}</a><span>010 / 91 649 70 00</span></div>
+      <nav class="footer-links" aria-label="Información legal y accesibilidad">
+        ${legalLinks.map(([label, href]) => `<a href="${href}">${label}</a>`).join("")}
+      </nav>
+    </footer>`;
 }
 
 function page() {
@@ -447,6 +551,8 @@ function page() {
     eventos: () => eventsPage(copy),
     blog: () => listingPage("Blog", "Firmas y aprendizaje contra la pobreza energética.", "Reflexiones sobre datos urbanos, confort, rehabilitación, derechos y participación ciudadana.", blogPosts, true, assets.townHallOld, "Antiguo Ayuntamiento de Fuenlabrada"),
     recursos: () => resourcesPage(copy),
+    faq: () => faqPage(copy),
+    buscar: () => searchPage(copy),
     contacto: () => contactPage(copy)
   };
   return (pages[route] || pages.inicio)();
@@ -470,6 +576,39 @@ function bindEvents() {
     toggle.addEventListener("click", () => {
       const open = nav.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", String(open));
+    });
+  }
+  const searchInput = document.querySelector("#site-search");
+  if (searchInput) {
+    searchInput.addEventListener("input", (event) => {
+      searchQuery = event.target.value;
+      const results = document.querySelector(".search-results");
+      const query = searchQuery.trim().toLowerCase();
+      const matches = query
+        ? searchItems().filter(([, title, text]) => `${title} ${text}`.toLowerCase().includes(query))
+        : searchItems();
+      results.innerHTML = matches.length
+        ? matches.map(([id, title, text]) => `<a href="#/${id}"><span>${title}</span><p>${text}</p></a>`).join("")
+        : `<p>No se han encontrado resultados para "${escapeHtml(searchQuery)}".</p>`;
+    });
+  }
+  const contactForm = document.querySelector("#contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      contactForm.classList.add("was-submitted");
+      if (!contactForm.reportValidity()) return;
+      const data = new FormData(contactForm);
+      const subject = `Consulta EITEL Fuenlabrada - ${data.get("subject")}`;
+      const body = [
+        `Nombre: ${data.get("name")}`,
+        `Correo electrónico: ${data.get("email")}`,
+        `Motivo: ${data.get("subject")}`,
+        "",
+        "Mensaje:",
+        data.get("message")
+      ].join("\n");
+      location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   }
 }
