@@ -128,6 +128,7 @@ const privacyItems = [
 ];
 
 const news = [
+  ["Facebook · Ayuntamiento", "Nuevas ayudas municipales para mejorar tu vivienda y ahorrar en energía", "23/06/2026", "El Ayuntamiento convoca tres líneas de ayudas: accesibilidad, eficiencia energética (energía solar y ventanas) y pago de las facturas de luz y gas para jóvenes. Solicitudes hasta el 11 de octubre de 2026.", "https://www.facebook.com/AyuntamientoFuenlabrada/posts/%EF%B8%8F-nuevas-ayudas-municipales-para-mejorar-tu-vivienda-y-ahorrar-en-energ%C3%ADael-ayun/1350720430577575/"],
   ["Noticias", "Bienestar en el Hogar inicia el mapa municipal de vulnerabilidad energética", "05/05/2026", "El Ayuntamiento activa una primera lectura territorial para cruzar vivienda, renta, clima y consumo energético."],
   ["Noticias", "La Oficina EITEL atenderá consultas sobre facturas, bono social y confort térmico", "22/04/2026", "El nuevo servicio acompaña a familias y comunidades de propietarios para convertir datos en acciones útiles."],
   ["Noticias", "Carlos III y Esri se incorporan al piloto para reforzar investigación y tecnología GIS", "09/04/2026", "La colaboración permitirá evaluar impacto, priorizar actuaciones y visualizar escenarios de vulnerabilidad."],
@@ -489,7 +490,13 @@ function privacyPage(copy) {
 function listingPage(eyebrow, title, text, items, blog = false, heroImage = assets.panorama, heroAlt = "Vista panorámica de Fuenlabrada") {
   return hero({ ...translations.es_ES, tagline: eyebrow, hero: title, strip: text, heroImage, heroAlt }, true) + `
     <section class="section listing"><div class="listing-grid">
-      ${items.map((item) => `<article class="listing-card"><span>${item[0]}</span><h3>${item[1]}</h3><p>${blog ? item[4] : item[3]}</p><small>${blog ? `${item[2]} · ${item[3]}` : item[2]}</small></article>`).join("")}
+      ${items.map((item) => {
+        const href = blog ? item[5] : item[4];
+        const card = `<span>${item[0]}</span><h3>${item[1]}</h3><p>${blog ? item[4] : item[3]}</p><small>${blog ? `${item[2]} · ${item[3]}` : item[2]}</small>`;
+        return href
+          ? `<a class="listing-card" href="${href}" target="_blank" rel="noreferrer">${card}</a>`
+          : `<article class="listing-card">${card}</article>`;
+      }).join("")}
     </div></section>`;
 }
 
@@ -529,7 +536,7 @@ function searchItems() {
     ["proyecto", "El Proyecto", "Objetivos, metodología, pilotos, espacio de datos, socios, eficiencia energética y vulnerabilidad."],
     ["monitorizacion", "Monitorización", "Sensores de confort, temperatura, humedad, CO2, presencia, autorizaciones y Datadis."],
     ["seguridad", "Seguridad y privacidad", privacyItems.join(" ")],
-    ["noticias", "Noticias", news.flat().join(" ")],
+    ["noticias", "Noticias", news.map((item) => item.slice(0, 4).join(" ")).join(" ")],
     ["eventos", "Eventos", events.flat().join(" ")],
     ["blog", "Blog", blogPosts.flat().join(" ")],
     ["recursos", "Recursos", resources.join(" ")],

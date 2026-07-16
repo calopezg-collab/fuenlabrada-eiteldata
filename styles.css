@@ -539,6 +539,16 @@ h3 {
   min-height: 260px;
 }
 
+a.listing-card {
+  display: block;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+a.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
 .listing-card small,
 .listing-card strong {
   display: block;
