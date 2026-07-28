@@ -4,8 +4,6 @@ const assets = {
   culturalCenter: "assets/centro-cultural-fuenlabrada.jpg",
   park: "assets/parque-fuenlabrada.jpg",
   cityIcon: "assets/fuenlabrada-icon.jpg",
-  townHallLogo: "assets/logo-ayuntamiento-fuenlabrada.png",
-  imvfLogo: "assets/logo-imvf.png",
   townHall: "assets/ayuntamiento-fuenlabrada.avif",
   carlosIII: "assets/PP3-Universidad-Carlos-III-de-Madrid.png",
   esri: "assets/logo-esri.jpg",
@@ -27,12 +25,24 @@ const assets = {
   sensorConfort: "assets/sensor-confort.png",
   sensorConfortSalon: "assets/sensor-confort-salon.jpg",
   autorizacionSensores: "assets/modelo-autorizacion-sensores.pdf",
-  autorizacionDatadis: "assets/modelo-autorizacion-datadis.pdf"
+  autorizacionDatadis: "assets/modelo-autorizacion-datadis.pdf",
+  aytoLogo: "assets/logo-ayuntamiento-fuenlabrada.png",
+  imvfLogo: "assets/logo-imvf.png",
+  cartelAyudas: "assets/cartel-ayudas-fuenlabrada.jpg"
 };
 
 const contactEmail = "eitel@fuenlabrada.es";
 const contactPhone = "91 649 14 30";
 const contactAddress = "Calle Norte, 11. 28944 Fuenlabrada, Madrid.";
+
+const externalLinks = {
+  ayuntamiento: "https://www.ayto-fuenlabrada.es",
+  imvfSede: "https://sede.imvfuenlabrada.es/",
+  ayudaLuzGas: "https://sede.imvfuenlabrada.es/tablondeanuncios/anuncio.aspx?id=76857",
+  ayudaSolarVentanas: "https://sede.imvfuenlabrada.es/tablondeanuncios/anuncio.aspx?id=76990",
+  bonoSocial: "https://www.miteco.gob.es/es/energia/pobreza-energetica/pe-001.html",
+  asesoramientoEnergetico: "https://www.ayto-fuenlabrada.es/web/portal/w/el-ayuntamiento-habilita-un-nuevo-servicio-de-informaci%C3%B3n-y-asesoramiento-energ%C3%A9tico"
+};
 
 const navItems = [
   ["inicio", "Inicio"],
@@ -62,7 +72,7 @@ const legalLinks = [
 
 const translations = {
   es_ES: {
-    tagline: "Proyecto municipal EITEL",
+    tagline: "Proyecto municipal Bienestar en el Hogar",
     hero: "Bienestar en el Hogar: el proyecto de Fuenlabrada para medir y reducir la pobreza energética en los hogares del municipio.",
     strip: "La pobreza energética afecta a entre un 20 y un 25 % de la ciudadanía en España.",
     cta: "Solicitar información",
@@ -71,7 +81,7 @@ const translations = {
     contactTitle: "Contacto y solicitudes"
   },
   en_GB: {
-    tagline: "EITEL municipal project",
+    tagline: "Bienestar en el Hogar municipal project",
     hero: "Wellbeing at Home: Fuenlabrada's project to measure and reduce energy poverty in local households.",
     strip: "Energy poverty affects between 20 and 25% of citizens in Spain.",
     cta: "Request information",
@@ -120,7 +130,7 @@ const privacyItems = [
 ];
 
 const news = [
-  ["Noticias", "EITEL Fuenlabrada inicia el mapa municipal de vulnerabilidad energética", "05/05/2026", "El Ayuntamiento activa una primera lectura territorial para cruzar vivienda, renta, clima y consumo energético."],
+  ["Noticias", "Bienestar en el Hogar inicia el mapa municipal de vulnerabilidad energética", "05/05/2026", "El Ayuntamiento activa una primera lectura territorial para cruzar vivienda, renta, clima y consumo energético."],
   ["Noticias", "La Oficina EITEL atenderá consultas sobre facturas, bono social y confort térmico", "22/04/2026", "El nuevo servicio acompaña a familias y comunidades de propietarios para convertir datos en acciones útiles."],
   ["Noticias", "Carlos III y Esri se incorporan al piloto para reforzar investigación y tecnología GIS", "09/04/2026", "La colaboración permitirá evaluar impacto, priorizar actuaciones y visualizar escenarios de vulnerabilidad."],
   ["Noticias", "Fuenlabrada prepara talleres vecinales sobre energía y rehabilitación ligera", "26/03/2026", "Las primeras sesiones explicarán medidas sencillas de ahorro, lectura de facturas y derechos energéticos."]
@@ -148,7 +158,7 @@ const resources = [
 ];
 
 const faqs = [
-  ["¿Qué es EITEL Fuenlabrada?", "Es un proyecto municipal para medir, comprender y reducir la pobreza energética mediante datos de vivienda, consumo, confort interior y contexto urbano."],
+  ["¿Qué es Bienestar en el Hogar?", "Es el proyecto municipal de Fuenlabrada, dentro de la iniciativa europea EITEL, para medir, comprender y reducir la pobreza energética mediante datos de vivienda, consumo, confort interior y contexto urbano."],
   ["¿Para qué sirve el sensor de confort?", "Permite conocer temperatura, humedad, CO2 y presencia sin cámaras ni micrófonos, para orientar recomendaciones técnicas y detectar riesgos de habitabilidad."],
   ["¿Quién puede solicitar información?", "Hogares, comunidades de propietarios, entidades vecinales y profesionales que necesiten información sobre ahorro energético, confort, bono social o participación en el piloto."],
   ["¿Qué datos se tratan?", "Solo los datos necesarios para el diagnóstico y el acompañamiento técnico. El proyecto prioriza minimización, agregación, control de acceso y trazabilidad."],
@@ -192,12 +202,12 @@ function breadcrumb() {
 function header() {
   return `
     <header class="site-header">
-      <button class="brand reset-button" type="button" data-route="inicio" aria-label="EITEL Fuenlabrada inicio">
+      <button class="brand reset-button" type="button" data-route="inicio" aria-label="Bienestar en el Hogar inicio">
         <span class="institution-logos" aria-label="Ayuntamiento de Fuenlabrada e IMVF">
-          <img class="town-hall-logo" src="${assets.townHallLogo}" alt="Ayuntamiento de Fuenlabrada">
+          <img class="town-hall-logo" src="${assets.aytoLogo}" alt="Ayuntamiento de Fuenlabrada">
           <img class="imvf-logo" src="${assets.imvfLogo}" alt="Instituto Municipal de Vivienda de Fuenlabrada">
         </span>
-        <span class="brand-copy"><strong>EITEL Fuenlabrada</strong><small>Hogares sin pobreza energética</small></span>
+        <span class="brand-copy"><strong>Bienestar en el Hogar</strong><small>Fuenlabrada, hogares sin pobreza energética</small></span>
       </button>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
       <nav id="main-nav">
@@ -260,6 +270,34 @@ function projectSummary(copy) {
 
 function metricsBlock() {
   return `<section class="metrics" aria-label="Indicadores del proyecto">${metrics.map(([value, label]) => `<article><strong>${value}</strong><span>${label}</span></article>`).join("")}</section>`;
+}
+
+const ayudas = [
+  ["IMVF · Convocatoria abierta", "Ayudas Vivienda Joven para el pago de la Luz y el Gas", "Dirigidas a jóvenes de entre 18 y 35 años. Plazo abierto hasta el 11 de octubre de 2026.", externalLinks.ayudaLuzGas],
+  ["IMVF · Convocatoria abierta", "Ayudas Municipales para energía Solar y Cambio de Ventanas", "Subvenciones para instalar energía solar y sustituir tus ventanas por otras más eficientes.", externalLinks.ayudaSolarVentanas],
+  ["Ministerio · MITECO", "Bono social eléctrico", "Información oficial sobre el bono social: requisitos, descuentos y cómo solicitarlo.", externalLinks.bonoSocial],
+  ["Ayuntamiento de Fuenlabrada", "Servicio de información y asesoramiento energético", "Servicio municipal gratuito para resolver dudas sobre facturas, tarifas y ayudas.", externalLinks.asesoramientoEnergetico]
+];
+
+function ayudasSection() {
+  return `
+    <section class="section ayudas">
+      <a class="ayudas-poster" href="${externalLinks.imvfSede}" target="_blank" rel="noreferrer" aria-label="Cartel de ayudas: en el Instituto de Vivienda te ayudamos">
+        <img src="${assets.cartelAyudas}" alt="Cartel de la campaña municipal de ayudas para mejorar tu casa">
+      </a>
+      <div class="ayudas-content">
+        <p class="eyebrow">Ayudas y trámites</p>
+        <h2>Ayudas para mejorar tu casa y ahorrar energía.</h2>
+        <p class="ayudas-intro">El Instituto Municipal de la Vivienda de Fuenlabrada (IMVF) gestiona las ayudas municipales para reducir el gasto energético, mejorar la accesibilidad y ganar confort en tu vivienda. Consulta las convocatorias y tramítalas en línea desde la sede electrónica.</p>
+        <div class="ayudas-links">
+          ${ayudas.map(([tag, title, text, href]) => `<a href="${href}" target="_blank" rel="noreferrer"><span>${tag}</span><h3>${title}</h3><p>${text}</p></a>`).join("")}
+        </div>
+        <div class="ayudas-cta">
+          <a class="button" href="${externalLinks.imvfSede}" target="_blank" rel="noreferrer">Sede electrónica del IMVF</a>
+          <a href="${externalLinks.imvfSede}" target="_blank" rel="noreferrer" aria-label="Instituto Municipal de Vivienda de Fuenlabrada"><img src="${assets.imvfLogo}" alt="Instituto Municipal de Vivienda de Fuenlabrada"></a>
+        </div>
+      </div>
+    </section>`;
 }
 
 function focusGrid() {
@@ -326,7 +364,7 @@ function office() {
     <section class="office">
       <img src="${assets.townHall}" alt="Ayuntamiento de Fuenlabrada">
       <div>
-        <p class="eyebrow">Oficina EITEL</p>
+        <p class="eyebrow">Oficina Bienestar en el Hogar</p>
         <h2>Atención cercana para pasar del diagnóstico a la acción.</h2>
         <p class="office-contact">${contactAddress}<br><strong>Teléfono:</strong> ${contactPhone}</p>
         <ul><li>Revisión de facturas y potencia contratada.</li><li>Tramitación de ayudas energéticas y bono social.</li><li>Consejos de confort térmico para verano e invierno.</li><li>Derivación técnica para comunidades de propietarios.</li></ul>
@@ -336,18 +374,18 @@ function office() {
 
 function fundingStrip() {
   return `
-    <section class="funding-strip" aria-label="Financiación del proyecto">
-      <div><img src="${assets.fuenlabrada2030}" alt="Fuenlabrada 2030"><img src="${assets.ue}" alt="Next Generation EU"><img src="${assets.recuperacion}" alt="Plan de Recuperación, Transformación y Resiliencia"><img src="${assets.ministerio}" alt="Gobierno de España"></div>
+    <section class="funding-strip" aria-label="Instituciones y financiación del proyecto">
+      <div><a href="${externalLinks.ayuntamiento}" target="_blank" rel="noreferrer" aria-label="Web del Ayuntamiento de Fuenlabrada"><img src="${assets.aytoLogo}" alt="Ayuntamiento de Fuenlabrada"></a><a href="${externalLinks.imvfSede}" target="_blank" rel="noreferrer" aria-label="Sede electrónica del Instituto Municipal de Vivienda de Fuenlabrada"><img src="${assets.imvfLogo}" alt="Instituto Municipal de Vivienda de Fuenlabrada"></a><img src="${assets.fuenlabrada2030}" alt="Fuenlabrada 2030"><img src="${assets.ue}" alt="Next Generation EU"><img src="${assets.recuperacion}" alt="Plan de Recuperación, Transformación y Resiliencia"><img src="${assets.ministerio}" alt="Gobierno de España"></div>
       <p>Energía Inteligente para Todos: un enfoque desde los gobiernos locales. Proyecto orientado a transformar la gestión energética municipal mediante datos, seguridad y colaboración público-técnica.</p>
     </section>`;
 }
 
 function home(copy) {
-  return hero(copy) + projectSummary(copy) + metricsBlock() + focusGrid() + latestPreview() + office() + fundingStrip();
+  return hero(copy) + projectSummary(copy) + metricsBlock() + ayudasSection() + focusGrid() + latestPreview() + office() + fundingStrip();
 }
 
 function projectPage(copy) {
-  const pageCopy = { ...copy, tagline: "El Proyecto", hero: "EITEL Fuenlabrada: hogares saludables para el bienestar de la ciudadanía.", heroImage: assets.townHallOld, heroAlt: "Antiguo Ayuntamiento de Fuenlabrada" };
+  const pageCopy = { ...copy, tagline: "El Proyecto", hero: "Bienestar en el Hogar: hogares saludables para el bienestar de la ciudadanía.", heroImage: assets.townHallOld, heroAlt: "Antiguo Ayuntamiento de Fuenlabrada" };
   return hero(pageCopy, true) + `
     <section class="section article-page">
       ${sectionHeader("Unidad inteligente de vulnerabilidad energética", "Un servicio público preventivo, transversal y medible.", "EITEL adapta a Fuenlabrada la lógica de los proyectos europeos de innovación urbana: detectar pobreza energética oculta, intervenir con soluciones personalizadas y aprender de los datos para replicar el modelo.")}
@@ -493,7 +531,7 @@ function faqPage(copy) {
 
 function searchItems() {
   return [
-    ["inicio", "Inicio", "Resumen del proyecto municipal EITEL, pobreza energética, hogares saludables y oficina de atención."],
+    ["inicio", "Inicio", "Resumen del proyecto municipal Bienestar en el Hogar, pobreza energética, hogares saludables, ayudas del IMVF para luz, gas, energía solar y ventanas, bono social y oficina de atención."],
     ["proyecto", "El Proyecto", "Objetivos, metodología, pilotos, espacio de datos, socios, eficiencia energética y vulnerabilidad."],
     ["monitorizacion", "Monitorización", "Sensores de confort, temperatura, humedad, CO2, presencia, autorizaciones y Datadis."],
     ["seguridad", "Seguridad y privacidad", privacyItems.join(" ")],
@@ -525,7 +563,7 @@ function searchPage(copy) {
 function contactPage(copy) {
   return hero({ ...copy, tagline: "Contacto", hero: copy.contactTitle, strip: "Cuéntanos tu caso si necesitas revisar tu factura, mejorar el confort de tu vivienda o colaborar con el proyecto.", heroImage: assets.townHallOld, heroAlt: "Antiguo Ayuntamiento de Fuenlabrada" }, true) + `
     <section class="section contact-layout">
-      <div><p class="eyebrow">Oficina EITEL Fuenlabrada</p><h2>Atención presencial, telefónica y por correo.</h2><p>${contactAddress}</p><p><strong>Teléfono:</strong> ${contactPhone}</p><p><strong>Email:</strong> ${contactEmail}</p></div>
+      <div><p class="eyebrow">Oficina Bienestar en el Hogar</p><h2>Atención presencial, telefónica y por correo.</h2><p>${contactAddress}</p><p><strong>Teléfono:</strong> ${contactPhone}</p><p><strong>Email:</strong> ${contactEmail}</p></div>
       <form class="contact-form" id="contact-form">
         <label>Nombre y apellidos<input name="name" type="text" placeholder="Tu nombre" autocomplete="name" required></label>
         <label>Correo electrónico<input name="email" type="email" placeholder="tu@email.es" autocomplete="email" required></label>
@@ -540,8 +578,14 @@ function contactPage(copy) {
 function footer() {
   return `
     <footer class="site-footer">
-      <div><strong>EITEL Fuenlabrada</strong><span>Hogares sin pobreza energética</span></div>
+      <div><strong>Bienestar en el Hogar</strong><span>Fuenlabrada, hogares sin pobreza energética</span></div>
       <div><a href="mailto:${contactEmail}">${contactEmail}</a><span>${contactPhone}</span></div>
+      <nav class="footer-institutional" aria-label="Enlaces institucionales">
+        <span>Enlaces de interés</span>
+        <a href="${externalLinks.ayuntamiento}" target="_blank" rel="noreferrer">Ayuntamiento de Fuenlabrada</a>
+        <a href="${externalLinks.imvfSede}" target="_blank" rel="noreferrer">Instituto Municipal de la Vivienda (IMVF)</a>
+        <a href="${externalLinks.bonoSocial}" target="_blank" rel="noreferrer">Bono social (MITECO)</a>
+      </nav>
       <nav class="footer-links" aria-label="Información legal y accesibilidad">
         ${legalLinks.map(([label, href]) => `<a href="${href}">${label}</a>`).join("")}
       </nav>
@@ -555,7 +599,7 @@ function page() {
     proyecto: () => projectPage(copy),
     monitorizacion: () => monitoringPage(copy),
     seguridad: () => privacyPage(copy),
-    noticias: () => listingPage("Noticias", "Actualidad de EITEL Fuenlabrada.", "Avances del proyecto, colaboraciones y resultados del piloto municipal.", news, false, assets.park, "Parque urbano de Fuenlabrada"),
+    noticias: () => listingPage("Noticias", "Actualidad de Bienestar en el Hogar.", "Avances del proyecto, colaboraciones y resultados del piloto municipal.", news, false, assets.park, "Parque urbano de Fuenlabrada"),
     eventos: () => eventsPage(copy),
     blog: () => listingPage("Blog", "Firmas y aprendizaje contra la pobreza energética.", "Reflexiones sobre datos urbanos, confort, rehabilitación, derechos y participación ciudadana.", blogPosts, true, assets.townHallOld, "Antiguo Ayuntamiento de Fuenlabrada"),
     recursos: () => resourcesPage(copy),
@@ -607,7 +651,7 @@ function bindEvents() {
       contactForm.classList.add("was-submitted");
       if (!contactForm.reportValidity()) return;
       const data = new FormData(contactForm);
-      const subject = `Consulta EITEL Fuenlabrada - ${data.get("subject")}`;
+      const subject = `Consulta Bienestar en el Hogar - ${data.get("subject")}`;
       const body = [
         `Nombre: ${data.get("name")}`,
         `Correo electrónico: ${data.get("email")}`,
