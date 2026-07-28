@@ -32,6 +32,8 @@ const assets = {
 };
 
 const contactEmail = "eitel@fuenlabrada.es";
+const contactPhone = "91 649 14 30";
+const contactAddress = "Calle Norte, 11. 28944 Fuenlabrada, Madrid.";
 
 const externalLinks = {
   ayuntamiento: "https://www.ayto-fuenlabrada.es",
@@ -72,7 +74,7 @@ const translations = {
   es_ES: {
     tagline: "Proyecto municipal Bienestar en el Hogar",
     hero: "Bienestar en el Hogar: el proyecto de Fuenlabrada para medir y reducir la pobreza energética en los hogares del municipio.",
-    strip: "La pobreza energética afecta a entre un 20 o un 25 % de la ciudadanía en España.",
+    strip: "La pobreza energética afecta a entre un 20 y un 25 % de la ciudadanía en España.",
     cta: "Solicitar información",
     secondary: "Ver recursos",
     projectTitle: "Una unidad inteligente para detectar, prevenir y reducir la vulnerabilidad energética.",
@@ -80,7 +82,7 @@ const translations = {
   },
   en_GB: {
     tagline: "Bienestar en el Hogar municipal project",
-    hero: "Discover Bienestar en el Hogar, Fuenlabrada's project promoting neighbourhoods with homes free from energy poverty.",
+    hero: "Wellbeing at Home: Fuenlabrada's project to measure and reduce energy poverty in local households.",
     strip: "Energy poverty affects between 20 and 25% of citizens in Spain.",
     cta: "Request information",
     secondary: "View resources",
@@ -161,7 +163,7 @@ const faqs = [
   ["¿Quién puede solicitar información?", "Hogares, comunidades de propietarios, entidades vecinales y profesionales que necesiten información sobre ahorro energético, confort, bono social o participación en el piloto."],
   ["¿Qué datos se tratan?", "Solo los datos necesarios para el diagnóstico y el acompañamiento técnico. El proyecto prioriza minimización, agregación, control de acceso y trazabilidad."],
   ["¿Dónde puedo descargar autorizaciones?", "Los modelos de autorización para sensores y Datadis están disponibles en la página de Monitorización."],
-  ["¿Cómo contacto con la oficina EITEL?", `Puedes llamar al 010 / 91 649 70 00 o escribir a ${contactEmail}. El formulario de contacto prepara un correo con la consulta introducida.`]
+  ["¿Cómo contacto con la oficina EITEL?", `Puedes llamar al ${contactPhone} o escribir a ${contactEmail}. El formulario de contacto prepara un correo con la consulta introducida.`]
 ];
 
 let route = getRoute();
@@ -201,8 +203,11 @@ function header() {
   return `
     <header class="site-header">
       <button class="brand reset-button" type="button" data-route="inicio" aria-label="Bienestar en el Hogar inicio">
-        <img src="${assets.aytoLogo}" alt="Ayuntamiento de Fuenlabrada">
-        <span><strong>Bienestar en el Hogar</strong><small>Fuenlabrada, hogares sin pobreza energética</small></span>
+        <span class="institution-logos" aria-label="Ayuntamiento de Fuenlabrada e IMVF">
+          <img class="town-hall-logo" src="${assets.aytoLogo}" alt="Ayuntamiento de Fuenlabrada">
+          <img class="imvf-logo" src="${assets.imvfLogo}" alt="Instituto Municipal de Vivienda de Fuenlabrada">
+        </span>
+        <span class="brand-copy"><strong>Bienestar en el Hogar</strong><small>Fuenlabrada, hogares sin pobreza energética</small></span>
       </button>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
       <nav id="main-nav">
@@ -361,6 +366,7 @@ function office() {
       <div>
         <p class="eyebrow">Oficina Bienestar en el Hogar</p>
         <h2>Atención cercana para pasar del diagnóstico a la acción.</h2>
+        <p class="office-contact">${contactAddress}<br><strong>Teléfono:</strong> ${contactPhone}</p>
         <ul><li>Revisión de facturas y potencia contratada.</li><li>Tramitación de ayudas energéticas y bono social.</li><li>Consejos de confort térmico para verano e invierno.</li><li>Derivación técnica para comunidades de propietarios.</li></ul>
       </div>
     </section>`;
@@ -557,7 +563,7 @@ function searchPage(copy) {
 function contactPage(copy) {
   return hero({ ...copy, tagline: "Contacto", hero: copy.contactTitle, strip: "Cuéntanos tu caso si necesitas revisar tu factura, mejorar el confort de tu vivienda o colaborar con el proyecto.", heroImage: assets.townHallOld, heroAlt: "Antiguo Ayuntamiento de Fuenlabrada" }, true) + `
     <section class="section contact-layout">
-      <div><p class="eyebrow">Oficina Bienestar en el Hogar</p><h2>Atención presencial, telefónica y por correo.</h2><p>Plaza de la Constitución, 1. 28943 Fuenlabrada, Madrid.</p><p><strong>Teléfono:</strong> 010 / 91 649 70 00</p><p><strong>Email:</strong> ${contactEmail}</p></div>
+      <div><p class="eyebrow">Oficina Bienestar en el Hogar</p><h2>Atención presencial, telefónica y por correo.</h2><p>${contactAddress}</p><p><strong>Teléfono:</strong> ${contactPhone}</p><p><strong>Email:</strong> ${contactEmail}</p></div>
       <form class="contact-form" id="contact-form">
         <label>Nombre y apellidos<input name="name" type="text" placeholder="Tu nombre" autocomplete="name" required></label>
         <label>Correo electrónico<input name="email" type="email" placeholder="tu@email.es" autocomplete="email" required></label>
@@ -573,7 +579,7 @@ function footer() {
   return `
     <footer class="site-footer">
       <div><strong>Bienestar en el Hogar</strong><span>Fuenlabrada, hogares sin pobreza energética</span></div>
-      <div><a href="mailto:${contactEmail}">${contactEmail}</a><span>010 / 91 649 70 00</span></div>
+      <div><a href="mailto:${contactEmail}">${contactEmail}</a><span>${contactPhone}</span></div>
       <nav class="footer-institutional" aria-label="Enlaces institucionales">
         <span>Enlaces de interés</span>
         <a href="${externalLinks.ayuntamiento}" target="_blank" rel="noreferrer">Ayuntamiento de Fuenlabrada</a>
