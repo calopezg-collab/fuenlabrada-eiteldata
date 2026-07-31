@@ -523,6 +523,13 @@ h3 {
   min-height: 260px;
 }
 
+.listing-grid .listing-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(100%, calc((100% - 18px) / 2));
+  text-align: center;
+}
+
 .listing-card small,
 .listing-card strong {
   display: block;
@@ -1487,6 +1494,10 @@ h3 {
   .resource-links,
   .ayudas-links {
     grid-template-columns: 1fr;
+  }
+
+  .listing-grid .listing-card:last-child:nth-child(odd) {
+    width: 100%;
   }
 
   .sensor-gallery figure {
