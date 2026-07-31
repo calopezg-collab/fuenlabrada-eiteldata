@@ -42,8 +42,7 @@ const externalLinks = {
   ayudaSolarVentanas: "https://sede.imvfuenlabrada.es/tablondeanuncios/anuncio.aspx?id=76990",
   bonoSocial: "https://www.miteco.gob.es/es/energia/pobreza-energetica/pe-001.html",
   asesoramientoEnergetico: "https://www.ayto-fuenlabrada.es/web/portal/w/el-ayuntamiento-habilita-un-nuevo-servicio-de-informaci%C3%B3n-y-asesoramiento-energ%C3%A9tico",
-  rtveReportaje: "https://www.rtve.es/play/videos/informativo-de-madrid/informativo-madrid-1-23-07-26/17167047/",
-  rtveEmbed: "https://www.rtve.es/drmn/embed/video/17167047"
+  rtveReportaje: "https://www.rtve.es/play/videos/informativo-de-madrid/informativo-madrid-1-23-07-26/17167047/"
 };
 
 const navItems = [
@@ -128,10 +127,11 @@ const privacyItems = [
 ];
 
 const news = [
-  ["RTVE", "Informativo Madrid 1 - 23/07/26", "23/07/2026", "RTVE emitió un reportaje sobre el proyecto EITEL. La pieza aparece a partir del minuto 8:58 del informativo.", externalLinks.rtveReportaje],
   ["IMVF", "Ayudas Vivienda Joven para el pago de luz y gas", "Convocatoria 2026", "Información oficial de la convocatoria gestionada por el Instituto Municipal de la Vivienda de Fuenlabrada.", externalLinks.ayudaLuzGas],
   ["IMVF", "Ayudas para energía solar y cambio de ventanas", "Convocatoria 2026", "Subvenciones municipales para instalar energía solar y sustituir ventanas por soluciones más eficientes.", externalLinks.ayudaSolarVentanas],
-  ["Ayuntamiento", "Servicio de información y asesoramiento energético", "Ayuntamiento de Fuenlabrada", "Servicio municipal gratuito para resolver dudas sobre facturas, tarifas y ayudas energéticas.", externalLinks.asesoramientoEnergetico]
+  ["Ayuntamiento", "Servicio de información y asesoramiento energético", "Ayuntamiento de Fuenlabrada", "Servicio municipal gratuito para resolver dudas sobre facturas, tarifas y ayudas energéticas.", externalLinks.asesoramientoEnergetico],
+  ["MITECO", "Bono social eléctrico", "Información oficial", "Requisitos, descuentos y solicitud del bono social eléctrico publicados por el Ministerio para la Transición Ecológica.", externalLinks.bonoSocial],
+  ["RTVE", "Informativo Madrid 1 - 23/07/26", "23/07/2026", "RTVE emitió un reportaje sobre el proyecto EITEL. La pieza aparece a partir del minuto 8:58 del informativo.", externalLinks.rtveReportaje]
 ];
 
 const resources = [
@@ -472,17 +472,6 @@ function privacyPage(copy) {
 
 function newsPage(copy) {
   return hero({ ...copy, tagline: "Noticias", hero: "Actualidad de Bienestar en el Hogar.", strip: "Reportaje de RTVE y enlaces oficiales del Ayuntamiento, el IMVF y administraciones públicas.", heroImage: assets.park, heroAlt: "Parque urbano de Fuenlabrada" }, true) + `
-    <section class="section video-panel rtve-panel">
-      <div class="video-frame">
-        <iframe src="${externalLinks.rtveEmbed}" title="RTVE - Informativo Madrid 1, 23 de julio de 2026" loading="lazy" allowfullscreen></iframe>
-      </div>
-      <div>
-        <p class="eyebrow">RTVE · 23/07/2026</p>
-        <h3>Informativo Madrid 1 - 23/07/26</h3>
-        <p>El reportaje sobre el proyecto EITEL aparece a partir del minuto 8:58 del informativo.</p>
-        <a class="button" href="${externalLinks.rtveReportaje}" target="_blank" rel="noreferrer">Ver en RTVE Play</a>
-      </div>
-    </section>
     <section class="section listing">
       ${sectionHeader("Enlaces oficiales", "Noticias y recursos reales.", "Selección de enlaces verificados relacionados con el proyecto, las ayudas y el asesoramiento energético.")}
       <div class="listing-grid">
