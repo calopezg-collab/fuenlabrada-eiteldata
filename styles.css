@@ -363,41 +363,6 @@ h3 {
   line-height: 1.6;
 }
 
-.metrics {
-  width: min(1180px, calc(100% - 44px));
-  margin: -28px auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  position: relative;
-  z-index: 4;
-}
-
-.metrics article {
-  min-height: 170px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
-  box-shadow: var(--shadow);
-}
-
-.metrics strong {
-  color: var(--blue);
-  font-size: clamp(42px, 6vw, 76px);
-  line-height: 0.95;
-}
-
-.metrics span {
-  margin-top: 10px;
-  color: var(--navy);
-  font-size: 18px;
-  font-weight: 850;
-}
-
 .section-heading {
   max-width: 760px;
   margin-bottom: 42px;
@@ -502,10 +467,11 @@ h3 {
   gap: 18px;
 }
 
-.mini-list article,
+.mini-list a,
 .listing-card,
-.resource-grid article,
+.resource-grid a,
 .article-grid article {
+  display: block;
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -526,6 +492,7 @@ h3 {
 
 .mini-list p,
 .listing-card p,
+.resource-grid p,
 .article-grid p,
 .article-grid li,
 .resource-panel p,
@@ -564,44 +531,6 @@ h3 {
   font-weight: 900;
 }
 
-.event-list {
-  display: grid;
-  gap: 18px;
-}
-
-.event-list article {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 24px;
-  align-items: stretch;
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
-  box-shadow: var(--shadow);
-}
-
-.event-date {
-  display: grid;
-  place-items: center;
-  min-height: 120px;
-  color: var(--white);
-  background: var(--blue);
-  font-size: 28px;
-  font-weight: 950;
-  text-align: center;
-}
-
-.event-list p {
-  color: var(--muted);
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.event-list strong {
-  color: var(--navy);
-}
-
 .resources {
   display: grid;
   gap: 28px;
@@ -637,16 +566,6 @@ h3 {
 
 .resource-grid {
   grid-template-columns: repeat(3, 1fr);
-}
-
-.resource-grid button {
-  margin-top: 14px;
-  border: 0;
-  border-radius: 4px;
-  padding: 10px 14px;
-  color: var(--white);
-  background: var(--blue);
-  font-weight: 900;
 }
 
 .contact-layout {
@@ -1553,7 +1472,6 @@ h3 {
     padding: 76px 0;
   }
 
-  .metrics,
   .focus-grid,
   .partner-row,
   .listing-grid,
@@ -1577,18 +1495,6 @@ h3 {
 
   .sensor-gallery img {
     min-height: 260px;
-  }
-
-  .event-list article {
-    grid-template-columns: 1fr;
-  }
-
-  .event-date {
-    min-height: 84px;
-  }
-
-  .metrics {
-    margin-top: 22px;
   }
 
   .focus-card {

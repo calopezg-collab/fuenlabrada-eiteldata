@@ -41,7 +41,9 @@ const externalLinks = {
   ayudaLuzGas: "https://sede.imvfuenlabrada.es/tablondeanuncios/anuncio.aspx?id=76857",
   ayudaSolarVentanas: "https://sede.imvfuenlabrada.es/tablondeanuncios/anuncio.aspx?id=76990",
   bonoSocial: "https://www.miteco.gob.es/es/energia/pobreza-energetica/pe-001.html",
-  asesoramientoEnergetico: "https://www.ayto-fuenlabrada.es/web/portal/w/el-ayuntamiento-habilita-un-nuevo-servicio-de-informaci%C3%B3n-y-asesoramiento-energ%C3%A9tico"
+  asesoramientoEnergetico: "https://www.ayto-fuenlabrada.es/web/portal/w/el-ayuntamiento-habilita-un-nuevo-servicio-de-informaci%C3%B3n-y-asesoramiento-energ%C3%A9tico",
+  rtveReportaje: "https://www.rtve.es/play/videos/informativo-de-madrid/informativo-madrid-1-23-07-26/17167047/",
+  rtveEmbed: "https://www.rtve.es/drmn/embed/video/17167047"
 };
 
 const navItems = [
@@ -49,8 +51,6 @@ const navItems = [
   ["proyecto", "El Proyecto"],
   ["monitorizacion", "Monitorización"],
   ["noticias", "Noticias"],
-  ["eventos", "Eventos"],
-  ["blog", "Blog"],
   ["recursos", "Recursos"],
   ["faq", "FAQ"],
   ["buscar", "Buscar"],
@@ -98,8 +98,6 @@ const focusCards = [
   ["Tu confort", "Cuáles son los objetivos", "Reducir gasto, mejorar salud urbana, aumentar confort interior y crear una metodología replicable para otros municipios.", assets.point]
 ];
 
-const metrics = [["8", "barrios monitorizados"], ["1.200", "hogares objetivo"], ["35%", "ahorro potencial medio"]];
-
 const objectives = [
   ["Eficiencia energética", assets.eficiencia, "Optimizar el consumo en hogares y edificios mediante datos de uso, detección de consumos excesivos y recomendaciones de ahorro ajustadas a cada caso."],
   ["Pobreza energética", assets.pobreza, "Identificar vulnerabilidades, priorizar ayudas y mejorar el acceso a energía asequible y segura para toda la ciudadanía."],
@@ -130,31 +128,17 @@ const privacyItems = [
 ];
 
 const news = [
-  ["Noticias", "Bienestar en el Hogar inicia el mapa municipal de vulnerabilidad energética", "05/05/2026", "El Ayuntamiento activa una primera lectura territorial para cruzar vivienda, renta, clima y consumo energético."],
-  ["Noticias", "La Oficina EITEL atenderá consultas sobre facturas, bono social y confort térmico", "22/04/2026", "El nuevo servicio acompaña a familias y comunidades de propietarios para convertir datos en acciones útiles."],
-  ["Noticias", "Carlos III y Esri se incorporan al piloto para reforzar investigación y tecnología GIS", "09/04/2026", "La colaboración permitirá evaluar impacto, priorizar actuaciones y visualizar escenarios de vulnerabilidad."],
-  ["Noticias", "Fuenlabrada prepara talleres vecinales sobre energía y rehabilitación ligera", "26/03/2026", "Las primeras sesiones explicarán medidas sencillas de ahorro, lectura de facturas y derechos energéticos."]
-];
-
-const events = [
-  ["14 MAY", "Taller: entiende tu factura energética", "Centro Cívico La Serna", "Sesión práctica para revisar potencia contratada, tarifa, bono social y consumos fantasmas."],
-  ["28 MAY", "Mesa técnica de barrios saludables", "Ayuntamiento de Fuenlabrada", "Encuentro con equipos sociales, vivienda, urbanismo y datos para priorizar zonas de intervención."],
-  ["11 JUN", "Ruta EITEL: confort de verano", "Loranca y Nuevo Versalles", "Paseo de diagnóstico urbano sobre sombra, orientación, islas de calor y viviendas vulnerables."]
-];
-
-const blogPosts = [
-  ["Pobreza energética", "Pobreza energética oculta: cuando el problema no aparece en la factura", "Equipo EITEL", "03/05/2026", "Muchas familias reducen consumos por debajo de lo saludable para evitar impagos. Detectarlo exige datos, escucha y trabajo de proximidad."],
-  ["Datos urbanos", "Cómo un mapa puede ayudar a decidir donde intervenir primero", "Laboratorio GIS", "20/04/2026", "La lectura por capas permite comparar antigüedad de edificios, renta, temperatura, ayudas y consumos sin identificar directamente a personas."],
-  ["Confort", "Cinco medidas de bajo coste para mejorar una vivienda en verano", "Oficina EITEL", "12/04/2026", "Ventilación nocturna, sombreamiento, burletes, uso eficiente de equipos y revisión de hábitos pueden reducir riesgo térmico."]
+  ["RTVE", "Informativo Madrid 1 - 23/07/26", "23/07/2026", "RTVE emitió un reportaje sobre el proyecto EITEL. La pieza aparece a partir del minuto 8:58 del informativo.", externalLinks.rtveReportaje],
+  ["IMVF", "Ayudas Vivienda Joven para el pago de luz y gas", "Convocatoria 2026", "Información oficial de la convocatoria gestionada por el Instituto Municipal de la Vivienda de Fuenlabrada.", externalLinks.ayudaLuzGas],
+  ["IMVF", "Ayudas para energía solar y cambio de ventanas", "Convocatoria 2026", "Subvenciones municipales para instalar energía solar y sustituir ventanas por soluciones más eficientes.", externalLinks.ayudaSolarVentanas],
+  ["Ayuntamiento", "Servicio de información y asesoramiento energético", "Ayuntamiento de Fuenlabrada", "Servicio municipal gratuito para resolver dudas sobre facturas, tarifas y ayudas energéticas.", externalLinks.asesoramientoEnergetico]
 ];
 
 const resources = [
-  "Guía para entender la factura eléctrica y detectar conceptos revisables.",
-  "Checklist de confort térmico para invierno y verano.",
-  "Modelo de autorización para diagnóstico energético de vivienda.",
-  "Mapa de recursos municipales: ayudas, oficina de consumo y servicios sociales.",
-  "Ficha para comunidades de propietarios con medidas de rehabilitación ligera.",
-  "Preguntas frecuentes sobre bono social, cortes de suministro y derechos."
+  ["PDF", "Autorización para sensores", "Modelo para aceptar la instalación temporal del sensor de confort y el tratamiento de datos ambientales.", assets.autorizacionSensores],
+  ["PDF", "Autorización Datadis", "Modelo para permitir la consulta técnica de datos de consumo eléctrico con fines de diagnóstico.", assets.autorizacionDatadis],
+  ["IMVF", "Sede electrónica del IMVF", "Acceso a trámites y convocatorias oficiales del Instituto Municipal de la Vivienda de Fuenlabrada.", externalLinks.imvfSede],
+  ["MITECO", "Bono social eléctrico", "Información oficial sobre requisitos, descuentos y solicitud del bono social.", externalLinks.bonoSocial]
 ];
 
 const faqs = [
@@ -268,10 +252,6 @@ function projectSummary(copy) {
     </section>`;
 }
 
-function metricsBlock() {
-  return `<section class="metrics" aria-label="Indicadores del proyecto">${metrics.map(([value, label]) => `<article><strong>${value}</strong><span>${label}</span></article>`).join("")}</section>`;
-}
-
 const ayudas = [
   ["IMVF · Convocatoria abierta", "Ayudas Vivienda Joven para el pago de la Luz y el Gas", "Dirigidas a jóvenes de entre 18 y 35 años. Plazo abierto hasta el 11 de octubre de 2026.", externalLinks.ayudaLuzGas],
   ["IMVF · Convocatoria abierta", "Ayudas Municipales para energía Solar y Cambio de Ventanas", "Subvenciones para instalar energía solar y sustituir tus ventanas por otras más eficientes.", externalLinks.ayudaSolarVentanas],
@@ -339,11 +319,9 @@ function mapStory() {
 function latestPreview() {
   return `
     <section class="section split-band">
-      <div><p class="eyebrow">Lecturas recomendadas</p><h2>Actualidad, aprendizaje y convocatorias.</h2></div>
+      <div><p class="eyebrow">Actualidad verificada</p><h2>Reportaje, ayudas y recursos oficiales.</h2></div>
       <div class="mini-list">
-        <article><span>Noticias</span><h3>${news[0][1]}</h3><p>${news[0][3]}</p></article>
-        <article><span>${events[0][0]}</span><h3>${events[0][1]}</h3><p>${events[0][3]}</p></article>
-        <article><span>${blogPosts[0][0]}</span><h3>${blogPosts[0][1]}</h3><p>${blogPosts[0][4]}</p></article>
+        ${news.slice(0, 3).map(([tag, title, meta, text, href]) => `<a href="${href}" target="_blank" rel="noreferrer"><span>${tag}</span><h3>${title}</h3><p>${text}</p><strong>${meta}</strong></a>`).join("")}
       </div>
     </section>`;
 }
@@ -381,7 +359,7 @@ function fundingStrip() {
 }
 
 function home(copy) {
-  return hero(copy) + projectSummary(copy) + metricsBlock() + ayudasSection() + focusGrid() + latestPreview() + office() + fundingStrip();
+  return hero(copy) + projectSummary(copy) + ayudasSection() + focusGrid() + latestPreview() + office() + fundingStrip();
 }
 
 function projectPage(copy) {
@@ -492,16 +470,25 @@ function privacyPage(copy) {
     <section class="section treatment"><div><p class="eyebrow">Tratamiento de datos personales</p><h2>Anonimización, agregación y controles para reducir riesgos.</h2></div><div class="treatment-grid"><article><h3>Anonimización</h3><p>Se eliminan o transforman identificadores directos y se aplican técnicas para reducir el riesgo de reidentificación.</p></article><article><h3>Agregación</h3><p>Los indicadores se muestran por zonas, edificios o grupos suficientemente amplios para orientar decisiones sin exponer situaciones individuales.</p></article><article><h3>Acceso limitado</h3><p>Cada perfil accede solo a la información necesaria: visualización agregada, análisis técnico o gestión de casos, según permisos definidos.</p></article></div></section>`;
 }
 
-function listingPage(eyebrow, title, text, items, blog = false, heroImage = assets.panorama, heroAlt = "Vista panorámica de Fuenlabrada") {
-  return hero({ ...translations.es_ES, tagline: eyebrow, hero: title, strip: text, heroImage, heroAlt }, true) + `
-    <section class="section listing"><div class="listing-grid">
-      ${items.map((item) => `<article class="listing-card"><span>${item[0]}</span><h3>${item[1]}</h3><p>${blog ? item[4] : item[3]}</p><small>${blog ? `${item[2]} · ${item[3]}` : item[2]}</small></article>`).join("")}
-    </div></section>`;
-}
-
-function eventsPage(copy) {
-  return hero({ ...copy, tagline: "Eventos", hero: "Convocatorias, talleres y rutas para aprender energía desde el barrio.", strip: "Actividades gratuitas y abiertas para vecinos, comunidades y profesionales.", heroImage: assets.culturalCenter, heroAlt: "Centro cultural de Fuenlabrada" }, true) + `
-    <section class="section event-list">${events.map(([date, title, place, text]) => `<article><div class="event-date">${date}</div><div><h3>${title}</h3><p>${text}</p><strong>${place}</strong></div></article>`).join("")}</section>`;
+function newsPage(copy) {
+  return hero({ ...copy, tagline: "Noticias", hero: "Actualidad de Bienestar en el Hogar.", strip: "Reportaje de RTVE y enlaces oficiales del Ayuntamiento, el IMVF y administraciones públicas.", heroImage: assets.park, heroAlt: "Parque urbano de Fuenlabrada" }, true) + `
+    <section class="section video-panel rtve-panel">
+      <div class="video-frame">
+        <iframe src="${externalLinks.rtveEmbed}" title="RTVE - Informativo Madrid 1, 23 de julio de 2026" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div>
+        <p class="eyebrow">RTVE · 23/07/2026</p>
+        <h3>Informativo Madrid 1 - 23/07/26</h3>
+        <p>El reportaje sobre el proyecto EITEL aparece a partir del minuto 8:58 del informativo.</p>
+        <a class="button" href="${externalLinks.rtveReportaje}" target="_blank" rel="noreferrer">Ver en RTVE Play</a>
+      </div>
+    </section>
+    <section class="section listing">
+      ${sectionHeader("Enlaces oficiales", "Noticias y recursos reales.", "Selección de enlaces verificados relacionados con el proyecto, las ayudas y el asesoramiento energético.")}
+      <div class="listing-grid">
+        ${news.map(([tag, title, meta, itemText, href]) => `<a class="listing-card" href="${href}" target="_blank" rel="noreferrer"><span>${tag}</span><h3>${title}</h3><p>${itemText}</p><small>${meta}</small></a>`).join("")}
+      </div>
+    </section>`;
 }
 
 function resourcesPage(copy) {
@@ -513,9 +500,9 @@ function resourcesPage(copy) {
   ];
   return hero({ ...copy, tagline: "Recursos", hero: "Herramientas prácticas para ahorrar energía y ganar confort.", strip: "Guías, fichas y modelos pensados para hogares, comunidades y equipos municipales.", heroImage: assets.park, heroAlt: "Parque urbano de Fuenlabrada" }, true) + `
     <section class="section resources">
-      <div class="resource-panel"><img src="${assets.people}" alt="Personas en una sesión participativa"><div><h2>Biblioteca EITEL</h2><p>Materiales preparados para consulta ciudadana. Los documentos definitivos podrán descargarse desde esta sección cuando la oficina publique cada versión.</p></div></div>
+      <div class="resource-panel"><img src="${assets.people}" alt="Personas en una sesión participativa"><div><h2>Biblioteca Bienestar en el Hogar</h2><p>Documentos del proyecto y enlaces oficiales para trámites, ayudas y consulta ciudadana.</p></div></div>
       <div class="resource-links">${links.map(([id, title, text]) => `<a href="#/${id}"><span>Página</span><h3>${title}</h3><p>${text}</p></a>`).join("")}</div>
-      <div class="resource-grid">${resources.map((resource) => `<article><span>PDF</span><h3>${resource}</h3><button type="button">Próximamente</button></article>`).join("")}</div>
+      <div class="resource-grid">${resources.map(([tag, title, text, href]) => `<a href="${href}" target="_blank" rel="noreferrer"><span>${tag}</span><h3>${title}</h3><p>${text}</p></a>`).join("")}</div>
     </section>`;
 }
 
@@ -536,9 +523,7 @@ function searchItems() {
     ["monitorizacion", "Monitorización", "Sensores de confort, temperatura, humedad, CO2, presencia, autorizaciones y Datadis."],
     ["seguridad", "Seguridad y privacidad", privacyItems.join(" ")],
     ["noticias", "Noticias", news.flat().join(" ")],
-    ["eventos", "Eventos", events.flat().join(" ")],
-    ["blog", "Blog", blogPosts.flat().join(" ")],
-    ["recursos", "Recursos", resources.join(" ")],
+    ["recursos", "Recursos", resources.flat().join(" ")],
     ["faq", "Preguntas frecuentes", faqs.flat().join(" ")],
     ["contacto", "Contacto", `Formulario, teléfono, correo electrónico, oficina EITEL, ${contactEmail}.`]
   ];
@@ -549,7 +534,7 @@ function searchPage(copy) {
   const results = query
     ? searchItems().filter(([, title, text]) => `${title} ${text}`.toLowerCase().includes(query))
     : searchItems();
-  return hero({ ...copy, tagline: "Buscador", hero: "Encuentra información del proyecto EITEL.", strip: "Busca por sensores, privacidad, ayudas, eventos, recursos o contacto.", heroImage: assets.panorama, heroAlt: "Vista panorámica de Fuenlabrada" }, true) + `
+  return hero({ ...copy, tagline: "Buscador", hero: "Encuentra información del proyecto EITEL.", strip: "Busca por sensores, privacidad, ayudas, recursos o contacto.", heroImage: assets.panorama, heroAlt: "Vista panorámica de Fuenlabrada" }, true) + `
     <section class="section search-page">
       <label class="search-box" for="site-search">Buscar en el sitio
         <input id="site-search" type="search" value="${escapeHtml(searchQuery)}" placeholder="Ej. sensores, privacidad, bono social" autocomplete="off">
@@ -599,9 +584,7 @@ function page() {
     proyecto: () => projectPage(copy),
     monitorizacion: () => monitoringPage(copy),
     seguridad: () => privacyPage(copy),
-    noticias: () => listingPage("Noticias", "Actualidad de Bienestar en el Hogar.", "Avances del proyecto, colaboraciones y resultados del piloto municipal.", news, false, assets.park, "Parque urbano de Fuenlabrada"),
-    eventos: () => eventsPage(copy),
-    blog: () => listingPage("Blog", "Firmas y aprendizaje contra la pobreza energética.", "Reflexiones sobre datos urbanos, confort, rehabilitación, derechos y participación ciudadana.", blogPosts, true, assets.townHallOld, "Antiguo Ayuntamiento de Fuenlabrada"),
+    noticias: () => newsPage(copy),
     recursos: () => resourcesPage(copy),
     faq: () => faqPage(copy),
     buscar: () => searchPage(copy),
