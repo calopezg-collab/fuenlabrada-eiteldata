@@ -774,6 +774,21 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.rtve-panel {
+  width: min(980px, calc(100% - 44px));
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.rtve-panel .video-frame {
+  width: 100%;
+}
+
+.rtve-panel > div:last-child {
+  max-width: 720px;
+}
+
 .video-frame {
   position: relative;
   overflow: hidden;
