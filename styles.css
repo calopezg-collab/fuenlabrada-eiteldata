@@ -776,6 +776,7 @@ h3 {
 
 .rtve-panel {
   width: min(980px, calc(100% - 44px));
+  margin: 0 auto 28px;
   grid-template-columns: 1fr;
   justify-items: center;
   text-align: center;
@@ -786,7 +787,10 @@ h3 {
 }
 
 .rtve-panel > div:last-child {
+  display: grid;
+  justify-items: center;
   max-width: 720px;
+  margin: 0 auto;
 }
 
 .video-frame {
